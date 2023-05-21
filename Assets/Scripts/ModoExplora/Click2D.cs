@@ -9,7 +9,7 @@ public class Click2D : MonoBehaviour
 
     Vector3 worldPosition;
 
-    private bool TocaPuerta = false;
+    public bool TocaPuerta = false;
 
    /* private Vector3 
 
@@ -62,12 +62,12 @@ public class Click2D : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Cambio")) 
         {
-            TocaPuerta = true;
+           TocaPuerta = true;
 
-            puertaX = collision.GetComponent<Puerta>();
+           puertaX = collision.GetComponent<Puerta>();
 
-            this.gameObject.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x, puertaX.coordenadasNuevas.transform.position.y - puertaX.posicionExtraJugador, puertaX.coordenadasNuevas.transform.position.z);
-            mainCamera.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x + puertaX.posicionExtraCamaraX, puertaX.coordenadasNuevas.transform.position.y + puertaX.posicionExtraCamaraY, puertaX.coordenadasNuevas.transform.position.z - 10);
+           this.gameObject.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x, puertaX.coordenadasNuevas.transform.position.y - puertaX.posicionExtraJugador, puertaX.coordenadasNuevas.transform.position.z);
+           mainCamera.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x + puertaX.posicionExtraCamaraX, puertaX.coordenadasNuevas.transform.position.y + puertaX.posicionExtraCamaraY, puertaX.coordenadasNuevas.transform.position.z - 10);
             //Cambia estado pantalla;
 
         }
@@ -76,6 +76,11 @@ public class Click2D : MonoBehaviour
     public bool getTocaPuerta() 
     {
         return TocaPuerta;
+    }
+
+    public void setTocaPuerta(bool TocaPuerta) 
+    {
+        this.TocaPuerta = TocaPuerta;
     }
 
 }

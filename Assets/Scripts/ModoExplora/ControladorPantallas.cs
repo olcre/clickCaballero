@@ -10,7 +10,7 @@ public class ControladorPantallas : MonoBehaviour
     public GameObject player;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         listaPantallas[0].GetComponent<Pantalla>().setPantallaActiva(true);
     }
@@ -19,7 +19,13 @@ public class ControladorPantallas : MonoBehaviour
     void Update()
     {
         pantallaActiva();
-        jugadorCambiaPantalla();
+        if (player.GetComponent<Click2D>().getTocaPuerta()) 
+        { 
+            jugadorCambiaPantalla();
+            player.GetComponent<Click2D>().setTocaPuerta(false);
+        }
+
+
     }
 
 
@@ -30,6 +36,8 @@ public class ControladorPantallas : MonoBehaviour
         //{
         int i = controlPosicion();
 
+        if (!player.GetComponent<Click2D>().getTocaPuerta()) 
+        { 
             if (listaPantallas[i].GetComponent<Pantalla>().getPantallaActiva())
             {
                 listaPantallas[i].GetComponent<Pantalla>().activaPuntoFuga();
@@ -38,7 +46,7 @@ public class ControladorPantallas : MonoBehaviour
             {
                 listaPantallas[i].GetComponent<Pantalla>().desactivaPuntoFuga();
             }
-        //}
+        }
     }
 
 
@@ -80,13 +88,12 @@ public class ControladorPantallas : MonoBehaviour
     {
         
         Debug.Log("Posición para pantalla: "+controlPosicion());
-        if (player.GetComponent<Click2D>().getTocaPuerta()) 
+        if (player.GetComponent<Click2D>().getTocaPuerta())
         {
             Pantalla pantallaActual = listaPantallas[controlPosicion()].GetComponent<Pantalla>();
             //Tengo que averiguar cual sera la siguiente pantalla y después desactivar la que se tenia activa
             pantallaActual.setPantallaActiva(false);
             pantallaActual.pantallaRelacionada.GetComponent<Pantalla>().setPantallaActiva(true);
-            
         }
     }
 

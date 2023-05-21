@@ -21,7 +21,9 @@ public class Pantalla : MonoBehaviour
 
     float minEscala = 2f, maxEscala = 0.2f;
 
-    private bool pantallaActiva;
+    public bool pantallaActiva = false;
+
+   // private bool pantallaActiva;
 
     //public bool pantallaActiva { get => pantallaActiva; set => pantallaActiva = value; }
 
@@ -37,7 +39,7 @@ public class Pantalla : MonoBehaviour
     void Update()
     {
         // Calcula la distancia entre el personaje y el punto de fuga
-        if (pantallaActiva)
+        if (pantallaActiva && !player.GetComponent<Click2D>().getTocaPuerta())
         {
             personajeEnPuntoDeFuga();
         }
