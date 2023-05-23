@@ -7,23 +7,23 @@ public class ControladorPantallas : MonoBehaviour
 
     public GameObject[] listaPantallas;
 
-    public GameObject player;
+    public GameObject player, camara;
 
     // Start is called before the first frame update
     void Awake()
     {
         listaPantallas[0].GetComponent<Pantalla>().setPantallaActiva(true);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
         pantallaActiva();
-        if (player.GetComponent<Click2D>().getTocaPuerta()) 
-        { 
-            jugadorCambiaPantalla();
-            player.GetComponent<Click2D>().setTocaPuerta(false);
-        }
+       /* if (player.GetComponent<Click2D>().getTocaPuerta()) 
+        { */
+        jugadorCambiaPantalla();
+       // }
 
 
     }
@@ -36,17 +36,18 @@ public class ControladorPantallas : MonoBehaviour
         //{
         int i = controlPosicion();
 
-        if (!player.GetComponent<Click2D>().getTocaPuerta()) 
-        { 
-            if (listaPantallas[i].GetComponent<Pantalla>().getPantallaActiva())
+      //  if (!player.GetComponent<Click2D>().getTocaPuerta()) 
+        //{ 
+            if (!listaPantallas[i].GetComponent<Pantalla>().getPantallaActiva())
             {
-                listaPantallas[i].GetComponent<Pantalla>().activaPuntoFuga();
+                
+                listaPantallas[i].GetComponent<Pantalla>().desactivaPuntoFuga();
             }
             else 
             {
-                listaPantallas[i].GetComponent<Pantalla>().desactivaPuntoFuga();
+                listaPantallas[i].GetComponent<Pantalla>().activaPuntoFuga();
             }
-        }
+        //}
     }
 
 
@@ -87,13 +88,22 @@ public class ControladorPantallas : MonoBehaviour
     private void jugadorCambiaPantalla() 
     {
         
-        Debug.Log("Posición para pantalla: "+controlPosicion());
+        //Debug.Log("Posición para pantalla: "+controlPosicion());
         if (player.GetComponent<Click2D>().getTocaPuerta())
         {
+            Puerta puertaX = player.GetComponent<Click2D>().PuertaX;
+
             Pantalla pantallaActual = listaPantallas[controlPosicion()].GetComponent<Pantalla>();
             //Tengo que averiguar cual sera la siguiente pantalla y después desactivar la que se tenia activa
             pantallaActual.setPantallaActiva(false);
             pantallaActual.pantallaRelacionada.GetComponent<Pantalla>().setPantallaActiva(true);
+
+            player.gameObject.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x, puertaX.coordenadasNuevas.transform.position.y - puertaX.posicionExtraJugador, puertaX.coordenadasNuevas.transform.position.z);
+            camara.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x + puertaX.posicionExtraCamaraX, puertaX.coordenadasNuevas.transform.position.y + puertaX.posicionExtraCamaraY, puertaX.coordenadasNuevas.transform.position.z - 10);
+
+            player.GetComponent<Click2D>().verificadorDeMovimiento();
+
+            //player.GetComponent<Click2D>().setTocaPuerta(false);
         }
     }
 

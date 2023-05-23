@@ -30,6 +30,7 @@ public class Pantalla : MonoBehaviour
     private void Awake()
     {
         escalaRealPersonaje = player.GetComponent<Transform>().localScale;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
 
@@ -39,7 +40,7 @@ public class Pantalla : MonoBehaviour
     void Update()
     {
         // Calcula la distancia entre el personaje y el punto de fuga
-        if (pantallaActiva && !player.GetComponent<Click2D>().getTocaPuerta())
+        if (pantallaActiva /*&& !player.GetComponent<Click2D>().getTocaPuerta()*/)
         {
             personajeEnPuntoDeFuga();
         }

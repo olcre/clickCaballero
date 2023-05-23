@@ -9,16 +9,20 @@ public class Click2D : MonoBehaviour
 
     Vector3 worldPosition;
 
-    public bool TocaPuerta = false;
+    public bool tocaPuerta;
 
-   /* private Vector3 
+    private Puerta puertaX;
 
-    //private float velocidad = 5.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }*/
+    public Puerta PuertaX { get => puertaX; set => puertaX = value; }
+
+    /* private Vector3 
+
+     //private float velocidad = 5.0f;
+     // Start is called before the first frame update
+     void Start()
+     {
+
+     }*/
 
     void Update()
     {
@@ -31,43 +35,54 @@ public class Click2D : MonoBehaviour
     //Permite mover al jugador
     private void clickMovimiento() 
     {
-        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButtonDown(0) /*&& !tocaPuerta*/)
         {
             Vector3 mousePosition = Input.mousePosition;
 
             mousePosition.z = -mainCamera.transform.position.z;
             worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
 
-            TocaPuerta = false;
+           //tocaPuerta = false;
         }
+       /* else if (Input.GetMouseButtonDown(0) && tocaPuerta) 
+        { 
+            tocaPuerta = false; //Hay fallos
+        }*/
+
     }
 
     //Verifica si el jugador puede moverse para evitar bugs al cambiar de pantalla
-    private void verificadorDeMovimiento() 
+    public void verificadorDeMovimiento() 
     {
-        if (TocaPuerta)
-        {
-            transform.position = transform.position;
-        }
-        else
+        //Debug.Log("La puerta ha sido " + tocaPuerta);
+        if (!tocaPuerta)
         {
             transform.position = Vector3.MoveTowards(transform.position, worldPosition, Time.deltaTime * 5);
+            
+        }
+        else 
+        {
+            Debug.Log("Puerta afecta a player");
+            transform.position = transform.position;
+            worldPosition = transform.position;
+            tocaPuerta = false;
         }
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Puerta puertaX;
 
         if (collision.gameObject.CompareTag("Cambio")) 
         {
-           TocaPuerta = true;
+            tocaPuerta = true;
+            puertaX = collision.GetComponent<Puerta>();
+            
 
-           puertaX = collision.GetComponent<Puerta>();
-
-           this.gameObject.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x, puertaX.coordenadasNuevas.transform.position.y - puertaX.posicionExtraJugador, puertaX.coordenadasNuevas.transform.position.z);
-           mainCamera.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x + puertaX.posicionExtraCamaraX, puertaX.coordenadasNuevas.transform.position.y + puertaX.posicionExtraCamaraY, puertaX.coordenadasNuevas.transform.position.z - 10);
+            //this.gameObject.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x, puertaX.coordenadasNuevas.transform.position.y - puertaX.posicionExtraJugador, puertaX.coordenadasNuevas.transform.position.z);
+            //mainCamera.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x + puertaX.posicionExtraCamaraX, puertaX.coordenadasNuevas.transform.position.y + puertaX.posicionExtraCamaraY, puertaX.coordenadasNuevas.transform.position.z - 10);
+            //
             //Cambia estado pantalla;
 
         }
@@ -75,12 +90,11 @@ public class Click2D : MonoBehaviour
 
     public bool getTocaPuerta() 
     {
-        return TocaPuerta;
+        return tocaPuerta;
     }
 
-    public void setTocaPuerta(bool TocaPuerta) 
+    public void setTocaPuerta(bool tocaPuerta) 
     {
-        this.TocaPuerta = TocaPuerta;
+        this.tocaPuerta = tocaPuerta;
     }
-
 }
