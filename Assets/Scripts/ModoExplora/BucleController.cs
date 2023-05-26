@@ -14,6 +14,8 @@ public class BucleController : MonoBehaviour
 
     private Iglesia iglesia = new Iglesia(false);
 
+    private bool bucleRoto;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,10 @@ public class BucleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (bucleReiniciado)
+        {
+            iniciaBucle();
+        }
         
     }
 
@@ -30,7 +36,20 @@ public class BucleController : MonoBehaviour
     {
         inventario.setArmaduraOP(false);
         inventario.setCantidadDinero(0);
+        bucleReiniciado = false;
     }
+
+    public void setBucleReiniciado(bool bucleReiniciado) 
+    {
+        this.bucleReiniciado = bucleReiniciado;
+    }
+
+    public bool getBucleReiniciado() 
+    {
+        return bucleReiniciado;
+    }
+
+
 
     //Cuando el caballero se haya ido del callejon de sant jordi y de la calle principal, Sant Jordi ya no se encontrara en el callejon
 
