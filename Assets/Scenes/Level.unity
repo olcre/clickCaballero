@@ -539,9 +539,10 @@ GameObject:
   m_Component:
   - component: {fileID: 702922178}
   - component: {fileID: 702922179}
+  - component: {fileID: 702922180}
   m_Layer: 0
   m_Name: ControllScene
-  m_TagString: Untagged
+  m_TagString: ControlScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,6 +579,18 @@ MonoBehaviour:
   - {fileID: 1763273196}
   player: {fileID: 1042166989}
   camara: {fileID: 1214308010}
+--- !u!114 &702922180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702922177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81b01c85851f474db688f4840c507f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &802283185
 GameObject:
   m_ObjectHideFlags: 0

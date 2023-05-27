@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Click2D : MonoBehaviour
 {
+    public ControllScene escena;
+
     public Camera mainCamera;
 
     Vector3 worldPosition;
@@ -23,6 +25,11 @@ public class Click2D : MonoBehaviour
      {
 
      }*/
+
+    void Awake()
+    {
+
+    }
 
     void Update()
     {
@@ -86,6 +93,15 @@ public class Click2D : MonoBehaviour
             //Cambia estado pantalla;
 
         }
+
+
+        if (collision.gameObject.CompareTag("Castillo")) 
+        {
+
+            escena.setJugadorTocaEscenaFinal(true);
+
+        }
+
     }
 
     public bool getTocaPuerta() 
