@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 527a179b5e0011649b2aaa251204c355
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - a Abrasion
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3218d38317a8f034588af772e0fc7f9e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
