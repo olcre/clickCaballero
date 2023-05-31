@@ -13,6 +13,7 @@ public class CargaEscena : MonoBehaviour
     public GameObject panelCinematica;
     protected GameObject sceneController;
 
+    private bool escenaCargada = false;
     private void Awake()
     {
        // Debug.Log("Desactiva cinematica: " + panelCinematica.gameObject.name);
@@ -27,9 +28,8 @@ public class CargaEscena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space) && escenaCargada) 
         {
-            panelCinematica.SetActive(false);
             confirmarSalida();
         }
     }
@@ -40,11 +40,11 @@ public class CargaEscena : MonoBehaviour
         {
             Debug.Log("Activa cinematica");
             panelCinematica.SetActive(true);
+            escenaCargada = true;
 
-            
 //            gestorCinematicas();
-           /* video.Play();
-            video.loopPointReached += CheckOver;*/
+            /* video.Play();
+             video.loopPointReached += CheckOver;*/
         }
     }
 
@@ -52,6 +52,7 @@ public class CargaEscena : MonoBehaviour
     {
         if (this.gameObject.name == "CinematicaIglesia") 
         {
+            panelCinematica.SetActive(false);
             sceneController.GetComponent<SceneController>().iglesiaInvierte();
         }
     }

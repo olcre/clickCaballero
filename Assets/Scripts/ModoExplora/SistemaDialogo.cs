@@ -27,13 +27,14 @@ public class SistemaDialogo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerEnRango) 
+        //Input.GetKeyDown(KeyCode.Space)
+        if (playerEnRango && Input.GetButtonDown("Fire1")) 
         {
             if (!empiezaDialogo)
             {
                 iniciaDialogo();
             }
-            else if (texto.text == dialogos[indexDialogo]) 
+            else if (texto.text == dialogos[indexDialogo] || Input.GetButtonDown("Fire1")) 
             {
                 siguienteDialogo();
             }
@@ -45,7 +46,7 @@ public class SistemaDialogo : MonoBehaviour
         empiezaDialogo = true;
         panelDialogo.SetActive(true);
         indexDialogo = 0;
-
+        Time.timeScale = 0;
         StartCoroutine(ShowLine());
 
     }
@@ -62,6 +63,7 @@ public class SistemaDialogo : MonoBehaviour
         {
             empiezaDialogo = false;
             panelDialogo.SetActive(false);
+            Time.timeScale = 1;
         }
 
     }
@@ -73,7 +75,7 @@ public class SistemaDialogo : MonoBehaviour
         foreach (char ch in dialogos[indexDialogo]) 
         {
             texto.text += ch;
-            yield return new WaitForSeconds(tiempoCaracter);
+            yield return new WaitForSecondsRealtime(tiempoCaracter);
         }
 
     }
