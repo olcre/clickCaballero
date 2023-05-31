@@ -759,7 +759,8 @@ MonoBehaviour:
   texto: {fileID: 683758333}
   dialogos:
   - "Muy buenas mi se\xF1or, \xBFMe dariais una moneda?"
-  - AAAAAAAAAA
+  - Usad click izquierdo para saltar dialogos
+  - Usad barra espaciadora para saltar dialogos completamente
 --- !u!61 &400005236
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -989,7 +990,7 @@ GameObject:
   - component: {fileID: 416768065}
   m_Layer: 5
   m_Name: PanelDialogo
-  m_TagString: Untagged
+  m_TagString: PanelDialogo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1053,53 +1054,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416768063}
   m_CullTransparentMesh: 1
---- !u!1 &425108246
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 425108248}
-  - component: {fileID: 425108247}
-  m_Layer: 0
-  m_Name: SistemaDialogo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &425108247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425108246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d633f5ce2b773c4f9a23eb4df62d1c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panelDialogo: {fileID: 0}
-  texto: {fileID: 0}
-  dialogos: []
---- !u!4 &425108248
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425108246}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52.135227, y: 0.10342425, z: -0.09812609}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &445412968
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1257,11 @@ PrefabInstance:
       objectReference: {fileID: 314245080}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+--- !u!1 &494866785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+  m_PrefabInstance: {fileID: 1106091091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &596193934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1471,7 +1430,7 @@ GameObject:
   - component: {fileID: 683758333}
   m_Layer: 5
   m_Name: Dialogo
-  m_TagString: Untagged
+  m_TagString: Dialogo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1582,7 +1541,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &683758334
@@ -1666,6 +1625,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_PrefabInstance: {fileID: 8291013968264195943}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &699340289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40060686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d633f5ce2b773c4f9a23eb4df62d1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelDialogo: {fileID: 416768063}
+  texto: {fileID: 683758333}
+  dialogos:
+  - "Toma tres monedas de oro e invi\xE9rtelas como m\xE1s te convenga, luego, ve
+    a por el drag\xF3n y libera a la princesa, pues ese es tu destino. Alabado sea
+    el amor..."
 --- !u!1 &702922177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,7 +2343,7 @@ PrefabInstance:
       objectReference: {fileID: 1066985176}
     - target: {fileID: 7701265203916221032, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
@@ -2375,6 +2352,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_PrefabInstance: {fileID: 1106091091}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1106091096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494866785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d633f5ce2b773c4f9a23eb4df62d1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelDialogo: {fileID: 0}
+  texto: {fileID: 0}
+  dialogos: []
 --- !u!1001 &1121719013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3351,7 +3343,8 @@ PrefabInstance:
       objectReference: {fileID: 1895511995}
     - target: {fileID: 7701265203916221032, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}

@@ -16,28 +16,45 @@ public class SistemaDialogo : MonoBehaviour
     private bool empiezaDialogo = false;
     private int indexDialogo = 0;
 
-    private IEnumerator coroutine;
     private float tiempoCaracter = 0.05f;
 
     void Start()
     {
-        
+        //panelDialogo = GameObject.FindGameObjectWithTag("PanelDialogo");
+        //texto = GameObject.FindGameObjectWithTag("Dialogo");
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //Input.GetKeyDown(KeyCode.Space)
-        if (playerEnRango && Input.GetButtonDown("Fire1")) 
+        if (playerEnRango && Input.GetButtonDown("Fire2")) 
         {
             if (!empiezaDialogo)
             {
                 iniciaDialogo();
             }
-            else if (texto.text == dialogos[indexDialogo] || Input.GetButtonDown("Fire1")) 
+            else if (texto.text == dialogos[indexDialogo])
             {
                 siguienteDialogo();
             }
+            else if (Input.GetButtonDown("Fire2")) 
+            {
+                StopAllCoroutines();
+                siguienteDialogo();
+            }
+            else if (Input.GetButtonDown("Fire3"))
+            {
+                StopAllCoroutines();
+                texto.text = dialogos[indexDialogo];
+            }
+
+        }
+        else if (playerEnRango && Input.GetKeyDown(KeyCode.Space))
+        {
+            StopAllCoroutines();
+            finalizaDialogos();
         }
     }
 
@@ -61,11 +78,16 @@ public class SistemaDialogo : MonoBehaviour
         }
         else 
         {
-            empiezaDialogo = false;
-            panelDialogo.SetActive(false);
-            Time.timeScale = 1;
+            finalizaDialogos();
         }
 
+    }
+
+    private void finalizaDialogos() 
+    {
+        empiezaDialogo = false;
+        panelDialogo.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private IEnumerator ShowLine() 
