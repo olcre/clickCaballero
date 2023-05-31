@@ -12,6 +12,7 @@ public class ControladorPantallas : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Debug.Log(listaPantallas.Length);
         listaPantallas[0].GetComponent<Pantalla>().setPantallaActiva(true);
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -99,7 +100,7 @@ public class ControladorPantallas : MonoBehaviour
             pantallaActual.pantallaRelacionada.GetComponent<Pantalla>().setPantallaActiva(true);
 
             player.gameObject.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x, puertaX.coordenadasNuevas.transform.position.y - puertaX.posicionExtraJugador, puertaX.coordenadasNuevas.transform.position.z);
-            camara.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x + puertaX.posicionExtraCamaraX, puertaX.coordenadasNuevas.transform.position.y + puertaX.posicionExtraCamaraY, puertaX.coordenadasNuevas.transform.position.z - 10);
+            camara.transform.position = new Vector3(puertaX.coordenadasNuevas.transform.position.x + puertaX.posicionExtraCamaraX, puertaX.coordenadasNuevas.transform.position.y + puertaX.posicionExtraCamaraY, puertaX.coordenadasNuevas.transform.position.z - 11);
 
             player.GetComponent<Click2D>().verificadorDeMovimiento();
 
@@ -125,22 +126,5 @@ public class ControladorPantallas : MonoBehaviour
         }
         return num;
     }
-
-
-    private int revisionPantallas(int opcion) 
-    {
-        int numPosicion = -1;
-
-        switch (opcion) {  
-            case 0:
-                numPosicion = 0;
-                break;
-            case 1:
-                numPosicion = 1;
-                break;
-        }
-        return numPosicion;
-    }
-
 
 }

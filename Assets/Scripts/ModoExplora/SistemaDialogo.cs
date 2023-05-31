@@ -10,7 +10,11 @@ public class SistemaDialogo : MonoBehaviour
 
     public GameObject[] texto;
 
-    public GameObject[] respuestaJugador;
+    public SistemaDialogo(GameObject panelDialogo, GameObject[] texto) 
+    {
+        this.panelDialogo = panelDialogo;
+        this.texto = texto;
+    }
 
     void Start()
     {
@@ -22,18 +26,25 @@ public class SistemaDialogo : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            panelDialogo.SetActive(true);
+        }
+    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             panelDialogo.SetActive(true);
-            /*for (int i = 0; i < texto.Length; i++) {
+            for (int i = 0; i < texto.Length; i++) {
                 texto[i].SetActive(true);
-            }*/
+            }
             
         }
-    }
+    */
 
 
 }

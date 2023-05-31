@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Click2D : MonoBehaviour
 {
-    public ControllScene escena;
+  //  public ControllScene escena;
 
     public Camera mainCamera;
 
@@ -95,12 +95,12 @@ public class Click2D : MonoBehaviour
         }
 
 
-        if (collision.gameObject.CompareTag("Castillo")) 
+       /* if (collision.gameObject.CompareTag("Castillo")) 
         {
 
             escena.setJugadorTocaEscenaFinal(true);
 
-        }
+        }*/
 
     }
 

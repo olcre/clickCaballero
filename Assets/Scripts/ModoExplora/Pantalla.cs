@@ -19,7 +19,7 @@ public class Pantalla : MonoBehaviour
 
     private Vector3 escalaRealPersonaje;
 
-    float minEscala = 2f, maxEscala = 0.2f;
+    float minEscala = 0.2f, maxEscala = 2f;
 
     public bool pantallaActiva = false;
 
@@ -49,11 +49,16 @@ public class Pantalla : MonoBehaviour
     //  Metodo de calculo para el punto de fuga
     private void personajeEnPuntoDeFuga()
     {
-        float distance = Vector2.Distance(player.transform.position, puntoFuga.transform.position);
 
-        float escalaNueva = Mathf.Lerp(minEscala, maxEscala, distance * 0.1f);
+        //float distance = Vector2.Distance(player.transform.position, puntoFuga.transform.position);
 
-        player.transform.localScale = escalaRealPersonaje / escalaNueva;
+        float distancia = puntoFuga.transform.position.y - player.transform.position.y;
+
+        //float escalaNueva = Mathf.Lerp(minEscala, maxEscala, distancia * 0.1f);
+
+        float escalaNueva = (escalaRealPersonaje.y / Mathf.Lerp(minEscala, maxEscala, distancia * 0.1f));
+
+        player.transform.localScale = escalaRealPersonaje / (escalaNueva);
     }
 
     public void activaPuntoFuga()

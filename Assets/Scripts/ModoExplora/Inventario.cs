@@ -6,9 +6,9 @@ public class Inventario : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private bool armaduraOP;
+    public bool armaduraOP;
 
-    private int cantidadDinero;
+    public int cantidadDinero;
 
 
 

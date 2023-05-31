@@ -12,7 +12,7 @@ public class BucleController : MonoBehaviour
 
     private Inventario inventario;
 
-    private Iglesia iglesia = new Iglesia(false);
+    SceneController scene;
 
     private bool bucleRoto;
 
@@ -36,6 +36,7 @@ public class BucleController : MonoBehaviour
     {
         inventario.setArmaduraOP(false);
         inventario.setCantidadDinero(0);
+        scene.setVistaIglesia(false);
         bucleReiniciado = false;
     }
 
@@ -49,7 +50,15 @@ public class BucleController : MonoBehaviour
         return bucleReiniciado;
     }
 
+    public void setBuclesTotales(int buclesTotales)
+    {
+        this.buclesTotales = buclesTotales;
+    }
 
+    public int getBuclesTotales()
+    {
+        return buclesTotales;
+    }
 
     //Cuando el caballero se haya ido del callejon de sant jordi y de la calle principal, Sant Jordi ya no se encontrara en el callejon
 

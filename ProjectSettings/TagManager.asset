@@ -11,6 +11,9 @@ TagManager:
   - Vendedor
   - Cambio
   - ControlScene
+  - Cinematica
+  - Vagabundo
+  - Castillo
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,8 @@ public class Vendedor : MonoBehaviour
 
     private Inventario inventario;
 
+    public SistemaDialogo dialogos;
+
     void Start()
     {
         
@@ -22,7 +24,7 @@ public class Vendedor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (inventario.getCantidadDinero() > 0)
+            if (inventario.getCantidadDinero() == 5)
             {
                 recibeDinero = cobraDinero();
             }
