@@ -17,6 +17,8 @@ public class Click2D : MonoBehaviour
 
     public Puerta PuertaX { get => puertaX; set => puertaX = value; }
 
+    //private bool personajeEnMovimiento = false;
+
     /* private Vector3 
 
      //private float velocidad = 5.0f;
@@ -33,23 +35,21 @@ public class Click2D : MonoBehaviour
 
     void Update()
     {
-
         clickMovimiento();
         verificadorDeMovimiento();
-
     }
 
     //Permite mover al jugador
     private void clickMovimiento() 
     {
-
         if (Input.GetMouseButtonDown(0) /*&& !tocaPuerta*/)
         {
             Vector3 mousePosition = Input.mousePosition;
 
             mousePosition.z = -mainCamera.transform.position.z;
             worldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-
+            
+            //personajeEnMovimiento = true;
            //tocaPuerta = false;
         }
        /* else if (Input.GetMouseButtonDown(0) && tocaPuerta) 
@@ -65,7 +65,7 @@ public class Click2D : MonoBehaviour
         //Debug.Log("La puerta ha sido " + tocaPuerta);
         if (!tocaPuerta)
         {
-            transform.position = Vector3.MoveTowards(transform.position, worldPosition, Time.deltaTime * 5);
+            trasladoPersonaje();
             
         }
         else 
@@ -75,6 +75,11 @@ public class Click2D : MonoBehaviour
             worldPosition = transform.position;
             tocaPuerta = false;
         }
+    }
+
+    private void trasladoPersonaje() 
+    {
+        transform.position = Vector3.MoveTowards(transform.position, worldPosition, Time.deltaTime * 5);
     }
 
 
