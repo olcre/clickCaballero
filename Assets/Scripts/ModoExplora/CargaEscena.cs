@@ -44,19 +44,32 @@ public class CargaEscena : MonoBehaviour
             Debug.Log("Activa cinematica");
             panelCinematica.SetActive(true);
             escenaCargada = true;
-
-//            gestorCinematicas();
-            /* video.Play();
-             video.loopPointReached += CheckOver;*/
         }
     }
 
     private void confirmarSalida()
     {
-        if (this.gameObject.name == "CinematicaIglesia") 
+        if (this.gameObject.name == "CinematicaIglesia")
         {
             panelCinematica.SetActive(false);
             sceneController.GetComponent<SceneController>().iglesiaInvierte();
+        }
+        else if (this.gameObject.name == "CinematicaVendedor")
+        {
+            panelCinematica.SetActive(false);
+            sceneController.GetComponent<SceneController>().mejorarArmadura();
+        }
+        else if (this.gameObject.name == "CinematicaFinal2" || this.gameObject.name == "CinematicaFinal1") 
+        {
+            panelCinematica.SetActive(false);
+
+            if (this.gameObject.name == "CinematicaFinal2") 
+            {
+                sceneController.GetComponent<SceneController>().setFinalDragonMuerto(true);
+            }
+
+           // BucleController hay que meter los metodos aqui
+
         }
     }
 

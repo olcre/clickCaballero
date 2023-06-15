@@ -66,7 +66,6 @@ public class Click2D : MonoBehaviour
         if (!tocaPuerta)
         {
             trasladoPersonaje();
-            
         }
         else 
         {

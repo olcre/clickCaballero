@@ -38,6 +38,10 @@ public class BucleController : MonoBehaviour
         inventario.setCantidadDinero(0);
         scene.setVistaIglesia(false);
         bucleReiniciado = false;
+        if (scene.getFinalDragonMuerto()) 
+        {
+            dragonMuerto = true;
+        }
     }
 
     public void setBucleReiniciado(bool bucleReiniciado) 
@@ -61,6 +65,17 @@ public class BucleController : MonoBehaviour
     }
 
     //Cuando el caballero se haya ido del callejon de sant jordi y de la calle principal, Sant Jordi ya no se encontrara en el callejon
+
+
+    //Indirectamente de que final malo salga, se debe ejecutar esté metodo: 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player")) 
+        {
+            iniciaBucle();
+        }
+    }
 
 }
 

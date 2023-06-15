@@ -11,7 +11,11 @@ public class SceneController : MonoBehaviour
 
     public Inventario inventario;
 
+    public GameObject player;
+
     private bool vistaIglesia, sanJordiAccesible, visitaSanJordi, finalDragonMuerto;
+
+    public GameObject finalMaloUno, finalMaloDos;
 
     // Start is called before the first frame update
 
@@ -27,6 +31,8 @@ public class SceneController : MonoBehaviour
         sanJordiAccesible = false;
         visitaSanJordi = false;
         finalDragonMuerto = false;
+        finalMaloUno.SetActive(true);
+        finalMaloDos.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,6 +46,11 @@ public class SceneController : MonoBehaviour
         if (sanJordiAccesible) 
         { 
             
+        }
+
+        if (inventario.getArmaduraOP()) 
+        {
+            activaSegundoFinal();
         }
     }
 
@@ -70,6 +81,16 @@ public class SceneController : MonoBehaviour
         this.visitaSanJordi = visitaSanJordi;
     }
 
+    public bool getFinalDragonMuerto()
+    {
+        return finalDragonMuerto;
+    }
+
+    public void setFinalDragonMuerto(bool finalDragonMuerto)
+    {
+        this.finalDragonMuerto = finalDragonMuerto;
+    }
+
 
 
     public void iglesiaInvierte()
@@ -78,11 +99,26 @@ public class SceneController : MonoBehaviour
         vistaIglesia = true;
     }
 
+    public void mejorarArmadura() 
+    {
+        inventario.setArmaduraOP(true);
+    }
+
+
     public void santJordiQuest() 
     {
         visitaSanJordi = true;
         inventario.setCantidadDinero(inventario.getCantidadDinero() + 5);
     }
+
+    public void activaSegundoFinal() 
+    {
+        finalMaloUno.SetActive(false);
+        finalMaloDos.SetActive(true);
+    }
+
+
+
 
 
 }
