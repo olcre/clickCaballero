@@ -1,20 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class SistemaDialogo : MonoBehaviour
 {
     // Start is called before the first frame update
 
     private bool playerEnRango = false;
-    public GameObject panelDialogo;
+    public GameObject panelDialogo, panelOpciones;
     public TMP_Text texto;
     [TextArea(4, 6)]public string[] dialogos;
 
+    public Button[] botones;
+
+
     private bool empiezaDialogo = false;
     private int indexDialogo = 0;
+
+    public bool esUnaCinematica = false;
+
+    public bool tieneOpciones = false;
+    public int numDialogoOpciones; 
 
     private float tiempoCaracter = 0.05f;
 
@@ -28,8 +37,26 @@ public class SistemaDialogo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Input.GetKeyDown(KeyCode.Space)
-        if (playerEnRango && Input.GetButtonDown("Fire2")) 
+        flujoDialogos();
+        controlOpciones();
+    }
+
+    private void controlOpciones()
+    {
+        if (tieneOpciones)
+        {
+            panelOpciones.SetActive(true);
+        }
+        else
+        {
+            panelOpciones.SetActive(false);
+        }
+    }
+
+
+
+    private void flujoDialogos(){
+        if ((playerEnRango && Input.GetButtonDown("Fire2")) || (esUnaCinematica))
         {
             if (!empiezaDialogo)
             {
@@ -37,9 +64,22 @@ public class SistemaDialogo : MonoBehaviour
             }
             else if (texto.text == dialogos[indexDialogo])
             {
-                siguienteDialogo();
+                if (indexDialogo == numDialogoOpciones) 
+                {
+                    tieneOpciones = true;
+                }
+
+                if (tieneOpciones)
+                {
+                    controlOpciones();
+                    calculaBotones();
+                }
+                else
+                {
+                    siguienteDialogo();
+                }
             }
-            else if (Input.GetButtonDown("Fire2")) 
+            else if (Input.GetButtonDown("Fire2"))
             {
                 StopAllCoroutines();
                 siguienteDialogo();
@@ -51,10 +91,19 @@ public class SistemaDialogo : MonoBehaviour
             }
 
         }
-        else if (playerEnRango && Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.Space))
         {
             StopAllCoroutines();
             finalizaDialogos();
+        }
+    }
+
+    private void calculaBotones()
+    {
+        for (int i = 0; i < botones.Length; i++)
+        {
+            int buttonIndex = i; // Variable temporal para evitar el problema de cierre
+            botones[i].onClick.AddListener(() => OnButtonClicked());
         }
     }
 
@@ -80,7 +129,6 @@ public class SistemaDialogo : MonoBehaviour
         {
             finalizaDialogos();
         }
-
     }
 
     private void finalizaDialogos() 
@@ -88,6 +136,7 @@ public class SistemaDialogo : MonoBehaviour
         empiezaDialogo = false;
         panelDialogo.SetActive(false);
         Time.timeScale = 1;
+        esUnaCinematica = false;
     }
 
     private IEnumerator ShowLine() 
@@ -122,7 +171,10 @@ public class SistemaDialogo : MonoBehaviour
         }
     }
 
-
+    private void OnButtonClicked()
+    {
+        tieneOpciones = false;
+    }
     /*  public GameObject panelDialogo;
 
       public GameObject[] texto;

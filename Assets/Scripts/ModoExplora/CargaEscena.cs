@@ -8,8 +8,6 @@ public class CargaEscena : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    //public VideoPlayer video;
-
     public GameObject panelCinematica;
     protected GameObject sceneController;
 
@@ -28,7 +26,7 @@ public class CargaEscena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && escenaCargada) 
+        if (Input.GetKeyDown(KeyCode.Space) && (escenaCargada || panelCinematica.GetComponent<SistemaDialogo>().esUnaCinematica)) 
         {
             confirmarSalida();
         }
@@ -49,20 +47,18 @@ public class CargaEscena : MonoBehaviour
 
     private void confirmarSalida()
     {
+        panelCinematica.SetActive(false);
+
         if (this.gameObject.name == "CinematicaIglesia")
-        {
-            panelCinematica.SetActive(false);
+        { 
             sceneController.GetComponent<SceneController>().iglesiaInvierte();
         }
         else if (this.gameObject.name == "CinematicaVendedor")
         {
-            panelCinematica.SetActive(false);
             sceneController.GetComponent<SceneController>().mejorarArmadura();
         }
         else if (this.gameObject.name == "CinematicaFinal2" || this.gameObject.name == "CinematicaFinal1") 
         {
-            panelCinematica.SetActive(false);
-
             if (this.gameObject.name == "CinematicaFinal2") 
             {
                 sceneController.GetComponent<SceneController>().setFinalDragonMuerto(true);
