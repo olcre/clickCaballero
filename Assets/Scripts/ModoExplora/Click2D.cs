@@ -13,6 +13,8 @@ public class Click2D : MonoBehaviour
 
     public bool tocaPuerta;
 
+    public bool estaHablando;
+
     private Puerta puertaX;
 
     public Puerta PuertaX { get => puertaX; set => puertaX = value; }
@@ -30,7 +32,7 @@ public class Click2D : MonoBehaviour
 
     void Awake()
     {
-
+        estaHablando = false;
     }
 
     void Update()
@@ -63,7 +65,7 @@ public class Click2D : MonoBehaviour
     public void verificadorDeMovimiento() 
     {
         //Debug.Log("La puerta ha sido " + tocaPuerta);
-        if (!tocaPuerta)
+        if (!tocaPuerta && !estaHablando)
         {
             trasladoPersonaje();
         }
@@ -117,4 +119,15 @@ public class Click2D : MonoBehaviour
     {
         this.tocaPuerta = tocaPuerta;
     }
+
+    public bool getEstaHablando()
+    {
+        return estaHablando;
+    }
+
+    public void setEstaHablando(bool estaHablando)
+    {
+        this.estaHablando = estaHablando;
+    }
+
 }

@@ -199,7 +199,20 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 0.4504776
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: texto
+      value: 
+      objectReference: {fileID: 683758333}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelDialogo
+      value: 
+      objectReference: {fileID: 416768063}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelOpciones
+      value: 
+      objectReference: {fileID: 1831771002}
+    m_RemovedComponents:
+    - {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
 --- !u!1 &115077971
 GameObject:
@@ -521,6 +534,7 @@ GameObject:
   - component: {fileID: 311740895}
   - component: {fileID: 311740894}
   - component: {fileID: 311740893}
+  - component: {fileID: 311740896}
   m_Layer: 5
   m_Name: OpcionB
   m_TagString: Untagged
@@ -592,7 +606,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 311740894}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 311740896}
+        m_TargetAssemblyTypeName: ControlBoton, Assembly-CSharp
+        m_MethodName: SePulso
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &311740894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +657,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311740891}
   m_CullTransparentMesh: 1
+--- !u!114 &311740896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311740891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a7a802067330f48bb94ec3b1950db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respuestaCorrecta: 0
 --- !u!1 &314245080
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +929,7 @@ MonoBehaviour:
   - 'Usad click izquierdo para saltar dialogos. '
   - Usad barra espaciadora para saltar dialogos completamente
   botones: []
+  protaEscena: {fileID: 1042166989}
   esUnaCinematica: 0
   tieneOpciones: 0
   numDialogoOpciones: 0
@@ -1108,7 +1148,20 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: -0.4864235
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: texto
+      value: 
+      objectReference: {fileID: 683758333}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelDialogo
+      value: 
+      objectReference: {fileID: 416768063}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelOpciones
+      value: 
+      objectReference: {fileID: 1831771002}
+    m_RemovedComponents:
+    - {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
 --- !u!1 &416768063
 GameObject:
@@ -1385,10 +1438,39 @@ PrefabInstance:
       value: CinematicaSanJordi
       objectReference: {fileID: 0}
     - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: protaEscena
+      value: 
+      objectReference: {fileID: 1042166989}
+    - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: panelCinematica
       value: 
       objectReference: {fileID: 314245080}
-    m_RemovedComponents: []
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: texto
+      value: 
+      objectReference: {fileID: 683758333}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelDialogo
+      value: 
+      objectReference: {fileID: 416768063}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelOpciones
+      value: 
+      objectReference: {fileID: 1831771002}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: tieneOpciones
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: esUnaCinematica
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: dialogos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
 --- !u!1001 &596193934
 PrefabInstance:
@@ -1939,7 +2021,24 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelCinematica
+      value: 
+      objectReference: {fileID: 1573283654}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: texto
+      value: 
+      objectReference: {fileID: 683758333}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelDialogo
+      value: 
+      objectReference: {fileID: 416768063}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelOpciones
+      value: 
+      objectReference: {fileID: 1831771002}
+    m_RemovedComponents:
+    - {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
 --- !u!1 &773152949
 GameObject:
@@ -2447,6 +2546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1214308012}
   tocaPuerta: 0
+  estaHablando: 0
 --- !u!4 &1042166991
 Transform:
   m_ObjectHideFlags: 0
@@ -2536,6 +2636,7 @@ GameObject:
   - component: {fileID: 1066985180}
   - component: {fileID: 1066985179}
   - component: {fileID: 1066985178}
+  - component: {fileID: 1066985181}
   m_Layer: 5
   m_Name: Cinematica_Vendedor
   m_TagString: Cura
@@ -2622,6 +2723,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066985176}
   m_CullTransparentMesh: 1
+--- !u!114 &1066985181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066985176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d633f5ce2b773c4f9a23eb4df62d1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelDialogo: {fileID: 416768063}
+  panelOpciones: {fileID: 1831771002}
+  texto: {fileID: 683758333}
+  dialogos:
+  - 
+  botones: []
+  protaEscena: {fileID: 1042166989}
+  esUnaCinematica: 0
+  tieneOpciones: 0
+  numDialogoOpciones: 0
 --- !u!1 &1070707700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,6 +2868,10 @@ PrefabInstance:
       value: CinematicaVendedor
       objectReference: {fileID: 0}
     - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: protaEscena
+      value: 
+      objectReference: {fileID: 1042166989}
+    - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: panelCinematica
       value: 
       objectReference: {fileID: 1066985176}
@@ -2761,6 +2888,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 416768063}
     - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelOpciones
+      value: 
+      objectReference: {fileID: 1831771002}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: dialogos.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2768,7 +2899,8 @@ PrefabInstance:
       propertyPath: dialogos.Array.data[0]
       value: Buen aventurero, dejad que os afile la espada
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
 --- !u!4 &1106091092 stripped
 Transform:
@@ -3292,6 +3424,7 @@ GameObject:
   - component: {fileID: 1371882901}
   - component: {fileID: 1371882900}
   - component: {fileID: 1371882899}
+  - component: {fileID: 1371882902}
   m_Layer: 5
   m_Name: OpcionC
   m_TagString: Untagged
@@ -3363,7 +3496,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1371882900}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1371882902}
+        m_TargetAssemblyTypeName: ControlBoton, Assembly-CSharp
+        m_MethodName: SePulso
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1371882900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3402,6 +3547,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371882897}
   m_CullTransparentMesh: 1
+--- !u!114 &1371882902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371882897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a7a802067330f48bb94ec3b1950db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respuestaCorrecta: 0
 --- !u!1 &1374626725 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
@@ -4007,7 +4165,7 @@ GameObject:
   - component: {fileID: 1831771004}
   m_Layer: 5
   m_Name: PanelBotones
-  m_TagString: Untagged
+  m_TagString: PanelOpciones
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4192,6 +4350,7 @@ MonoBehaviour:
     a por el drag\xF3n y libera a la princesa, pues ese es tu destino. Alabado sea
     el amor..."
   botones: []
+  protaEscena: {fileID: 1042166989}
   esUnaCinematica: 1
   tieneOpciones: 0
   numDialogoOpciones: 0
@@ -4394,6 +4553,7 @@ GameObject:
   - component: {fileID: 2097716056}
   - component: {fileID: 2097716055}
   - component: {fileID: 2097716054}
+  - component: {fileID: 2097716057}
   m_Layer: 5
   m_Name: OpcionA
   m_TagString: Untagged
@@ -4465,7 +4625,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2097716055}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2097716057}
+        m_TargetAssemblyTypeName: ControlBoton, Assembly-CSharp
+        m_MethodName: SePulso
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2097716055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4504,6 +4676,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097716052}
   m_CullTransparentMesh: 1
+--- !u!114 &2097716057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097716052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a7a802067330f48bb94ec3b1950db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respuestaCorrecta: 0
 --- !u!1 &2115157917
 GameObject:
   m_ObjectHideFlags: 0
@@ -4618,6 +4803,10 @@ PrefabInstance:
       propertyPath: iglesia
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: protaEscena
+      value: 
+      objectReference: {fileID: 1042166989}
     - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: panelCinematica
       value: 

@@ -11,6 +11,8 @@ public class CargaEscena : MonoBehaviour
     public GameObject panelCinematica;
     protected GameObject sceneController;
 
+ //   public GameObject protaEscena;
+
     private bool escenaCargada = false;
     private void Awake()
     {
@@ -42,6 +44,8 @@ public class CargaEscena : MonoBehaviour
             Debug.Log("Activa cinematica");
             panelCinematica.SetActive(true);
             escenaCargada = true;
+
+            //collision.gameObject.GetComponent<Click2D>().setEstaHablando(true);
         }
     }
 
@@ -67,6 +71,8 @@ public class CargaEscena : MonoBehaviour
            // BucleController hay que meter los metodos aqui
 
         }
+
+        //protaEscena.gameObject.GetComponent<Click2D>().setEstaHablando(false);
     }
 
 

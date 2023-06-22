@@ -16,6 +16,7 @@ public class SistemaDialogo : MonoBehaviour
 
     public Button[] botones;
 
+    public GameObject protaEscena;
 
     private bool empiezaDialogo = false;
     private int indexDialogo = 0;
@@ -23,7 +24,8 @@ public class SistemaDialogo : MonoBehaviour
     public bool esUnaCinematica = false;
 
     public bool tieneOpciones = false;
-    public int numDialogoOpciones; 
+    public int numDialogoOpciones;
+    public bool opcionSeleciona = false;
 
     private float tiempoCaracter = 0.05f;
 
@@ -31,6 +33,7 @@ public class SistemaDialogo : MonoBehaviour
     {
         //panelDialogo = GameObject.FindGameObjectWithTag("PanelDialogo");
         //texto = GameObject.FindGameObjectWithTag("Dialogo");
+        //panelOpciones = GameObject.FindGameObjectWithTag("PanelOpciones");
 
     }
 
@@ -38,12 +41,12 @@ public class SistemaDialogo : MonoBehaviour
     void Update()
     {
         flujoDialogos();
-        controlOpciones();
+        //controlOpciones();
     }
 
     private void controlOpciones()
     {
-        if (tieneOpciones)
+        if (tieneOpciones && !opcionSeleciona) //Mirar control boton
         {
             panelOpciones.SetActive(true);
         }
@@ -56,54 +59,67 @@ public class SistemaDialogo : MonoBehaviour
 
 
     private void flujoDialogos(){
-        if ((playerEnRango && Input.GetButtonDown("Fire2")) || (esUnaCinematica))
+        if ((playerEnRango && Input.GetButtonDown("Fire1")) || (esUnaCinematica))
         {
+            protaEscena.gameObject.GetComponent<Click2D>().setEstaHablando(true);
             if (!empiezaDialogo)
             {
                 iniciaDialogo();
             }
             else if (texto.text == dialogos[indexDialogo])
             {
-                if (indexDialogo == numDialogoOpciones) 
+
+                if (indexDialogo == numDialogoOpciones && !opcionSeleciona && !tieneOpciones)
                 {
                     tieneOpciones = true;
                 }
 
                 if (tieneOpciones)
                 {
+                    verificaBotonesPulsados();
                     controlOpciones();
-                    calculaBotones();
+                    
+                    //calculaBotones();
                 }
                 else
                 {
                     siguienteDialogo();
                 }
             }
-            else if (Input.GetButtonDown("Fire2"))
+            else if (Input.GetButtonDown("Fire1"))
             {
                 StopAllCoroutines();
                 siguienteDialogo();
             }
-            else if (Input.GetButtonDown("Fire3"))
+            else if (Input.GetButtonDown("Fire2"))
             {
                 StopAllCoroutines();
                 texto.text = dialogos[indexDialogo];
             }
 
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else if (playerEnRango && Input.GetKeyDown(KeyCode.Space))
         {
             StopAllCoroutines();
             finalizaDialogos();
         }
     }
 
-    private void calculaBotones()
+    private void verificaBotonesPulsados()
     {
-        for (int i = 0; i < botones.Length; i++)
+        bool botonEncontrado = false;
+        for (int i = 0; i < botones.Length && !botonEncontrado; i++)
         {
-            int buttonIndex = i; // Variable temporal para evitar el problema de cierre
-            botones[i].onClick.AddListener(() => OnButtonClicked());
+            if (botones[i].gameObject.GetComponent<ControlBoton>().getBotonPulsado()) 
+            {
+                opcionSeleciona = true;
+                tieneOpciones = false;
+                botonEncontrado = true;
+            }
+            
+            //int buttonIndex = i; // Variable temporal para evitar el problema de cierre
+            //botones[i].onClick.AddListener(() => OnButtonClicked());
+            //Debug.Log("iNICIA BOTON");
         }
     }
 
@@ -137,6 +153,7 @@ public class SistemaDialogo : MonoBehaviour
         panelDialogo.SetActive(false);
         Time.timeScale = 1;
         esUnaCinematica = false;
+        protaEscena.gameObject.GetComponent<Click2D>().setEstaHablando(false);
     }
 
     private IEnumerator ShowLine() 
@@ -171,10 +188,11 @@ public class SistemaDialogo : MonoBehaviour
         }
     }
 
-    private void OnButtonClicked()
-    {
-        tieneOpciones = false;
-    }
+    //private void OnButtonClicked()
+    //{
+    //    tieneOpciones = false;
+    //}
+
     /*  public GameObject panelDialogo;
 
       public GameObject[] texto;
