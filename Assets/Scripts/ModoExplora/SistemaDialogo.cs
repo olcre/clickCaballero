@@ -29,11 +29,18 @@ public class SistemaDialogo : MonoBehaviour
 
     private float tiempoCaracter = 0.05f;
 
+    //private int posicionArrayBotones;
+
+    private bool opcionCorrecta = false;
+
     void Start()
     {
         //panelDialogo = GameObject.FindGameObjectWithTag("PanelDialogo");
         //texto = GameObject.FindGameObjectWithTag("Dialogo");
         //panelOpciones = GameObject.FindGameObjectWithTag("PanelOpciones");
+
+
+        //Bug: Parece que necesita ser pulsado dos veces seguidas el boton, esto nos lleva ha pensar que por alguna razón cuesta detectar el primer click
 
     }
 
@@ -41,7 +48,44 @@ public class SistemaDialogo : MonoBehaviour
     void Update()
     {
         flujoDialogos();
+
+        //determinarRespuestaCorrectaParaBoton();
+
         //controlOpciones();
+        if (opcionSeleciona && opcionCorrecta) 
+        { 
+            cambioDialogo();
+        }
+        
+    }
+
+    private void determinarRespuestaCorrectaParaBoton()
+    {
+        if (this.gameObject.name == "Vagabundo")
+        {
+            botones[0].GetComponent<ControlBoton>().respuestaCorrecta = true;
+            //botones[0].gameObject.GetComponentInChildren<TextMeshPro>().text = "Sí, te doy una";
+            botones[0].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Sí, te doy una";
+            //botones[1].GetComponentInChildren<TextMeshPro>().text = "No, ojalá me hubieran dado una";
+            //botones[2].GetComponentInChildren<TextMeshPro>().text = "No, no se de donde conseguirla";
+        }
+    }
+
+    private void cambioDialogo()
+    {
+        //Confirma bucle
+      // int bucleActual = confirmaBucle();
+        if (this.gameObject.name == "Vagabundo") 
+        { 
+            dialogos[1] = "Me has dado una moneda.";
+            dialogos[2] = "Ahora te doy información";
+        }
+    }
+
+    private int confirmaBucle()
+    {
+        //Más adelante programar contador de bucles
+        return 0;
     }
 
     private void controlOpciones()
@@ -69,7 +113,7 @@ public class SistemaDialogo : MonoBehaviour
             else if (texto.text == dialogos[indexDialogo])
             {
 
-                if (indexDialogo == numDialogoOpciones && !opcionSeleciona && !tieneOpciones)
+                if (indexDialogo == numDialogoOpciones && !opcionSeleciona)
                 {
                     tieneOpciones = true;
                 }
@@ -108,18 +152,41 @@ public class SistemaDialogo : MonoBehaviour
     private void verificaBotonesPulsados()
     {
         bool botonEncontrado = false;
+        //int posicion = 0;
         for (int i = 0; i < botones.Length && !botonEncontrado; i++)
         {
-            if (botones[i].gameObject.GetComponent<ControlBoton>().getBotonPulsado()) 
+            if (botones[i].gameObject.GetComponent<ControlBoton>().getBotonPulsado())
             {
+                botonEncontrado = true;
                 opcionSeleciona = true;
                 tieneOpciones = false;
-                botonEncontrado = true;
             }
-            
+
+            if (botones[i].gameObject.GetComponent<ControlBoton>().respuestaCorrecta) 
+            {
+                //Aqui se almacena una variable que diga si es una respuesta de cambio o no
+                opcionCorrecta = true;
+            }
+
+
+           // posicion = i;
             //int buttonIndex = i; // Variable temporal para evitar el problema de cierre
             //botones[i].onClick.AddListener(() => OnButtonClicked());
             //Debug.Log("iNICIA BOTON");
+        }
+
+
+
+        //return posicion;
+    }
+
+
+    private void resetearValoresBotones() 
+    {
+        for (int i = 0; i < botones.Length; i++) 
+        {
+            botones[i].GetComponent<ControlBoton>().setBotonPulsado(false);
+            botones[i].GetComponent<ControlBoton>().respuestaCorrecta = false;
         }
     }
 
@@ -154,6 +221,10 @@ public class SistemaDialogo : MonoBehaviour
         Time.timeScale = 1;
         esUnaCinematica = false;
         protaEscena.gameObject.GetComponent<Click2D>().setEstaHablando(false);
+
+        //Resetear valores de botones
+        resetearValoresBotones();
+
     }
 
     private IEnumerator ShowLine() 
@@ -175,7 +246,9 @@ public class SistemaDialogo : MonoBehaviour
             Debug.Log("Inicia dialogo");
             playerEnRango = true;
         }
- 
+
+        determinarRespuestaCorrectaParaBoton();
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
