@@ -40,7 +40,7 @@ public class SistemaDialogo : MonoBehaviour
         //panelOpciones = GameObject.FindGameObjectWithTag("PanelOpciones");
 
 
-        //Bug: Parece que necesita ser pulsado dos veces seguidas el boton, esto nos lleva ha pensar que por alguna razón cuesta detectar el primer click
+        //Bug: El multiopciones puede colarse donde no debe
 
     }
 
@@ -63,9 +63,18 @@ public class SistemaDialogo : MonoBehaviour
     {
         if (this.gameObject.name == "Vagabundo")
         {
-            botones[0].GetComponent<ControlBoton>().respuestaCorrecta = true;
+            botones[0].GetComponent<ControlBoton>().setRespuestaCorrecta(true);
             //botones[0].gameObject.GetComponentInChildren<TextMeshPro>().text = "Sí, te doy una";
             botones[0].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Sí, te doy una";
+            botones[1].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "No, creo que ya no hace falta comprar nada";
+            botones[2].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "No dispongo del dinero necesario";
+        }
+        else if (this.gameObject.name == "Cinematica_Vendedor")
+        {
+            botones[2].GetComponent<ControlBoton>().setRespuestaCorrecta(true);
+            botones[0].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "No, no la necesitaré";
+            botones[1].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "No dispongo del dinero necesario";
+            botones[2].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Sí, la necesitaré";
             //botones[1].GetComponentInChildren<TextMeshPro>().text = "No, ojalá me hubieran dado una";
             //botones[2].GetComponentInChildren<TextMeshPro>().text = "No, no se de donde conseguirla";
         }
@@ -74,13 +83,37 @@ public class SistemaDialogo : MonoBehaviour
     private void cambioDialogo()
     {
         //Confirma bucle
-      // int bucleActual = confirmaBucle();
-        if (this.gameObject.name == "Vagabundo") 
-        { 
+        // int bucleActual = confirmaBucle();
+        if (this.gameObject.name == "Vagabundo" && personajeDisponeDeLoSolicitado())
+        {
             dialogos[1] = "Me has dado una moneda.";
             dialogos[2] = "Ahora te doy información";
         }
+        else if (this.gameObject.name == "Vagabundo" && !personajeDisponeDeLoSolicitado()) 
+        {
+            dialogos[1] = "Podeis conseguir dinero en la iglesia.";
+            dialogos[2] = "El amor a veces tiene un precio...";
+        }
+        else if (this.gameObject.name == "Cinematica_Vendedor" && personajeDisponeDeLoSolicitado())
+        {
+            dialogos[1] = "Ahora vuestra armadura os podra proteger de todo mal... incluido el desamor.";
+        }
+        else if (this.gameObject.name == "Cinematica_Vendedor" && !personajeDisponeDeLoSolicitado()) //Aqui algo falla
+        {
+            dialogos[1] = "Siempre podreis volver...";
+        }
     }
+
+    public bool personajeDisponeDeLoSolicitado() 
+    {
+        bool objectoNecesario = false;
+        if (protaEscena.GetComponent<Inventario>().getCantidadDinero() > 0 && (this.gameObject.name == "Vagabundo" || this.gameObject.name == "Cinematica_Vendedor")) 
+        {
+            objectoNecesario = true;
+        }
+        return objectoNecesario;
+    }
+
 
     private int confirmaBucle()
     {
@@ -103,8 +136,9 @@ public class SistemaDialogo : MonoBehaviour
 
 
     private void flujoDialogos(){
-        if ((playerEnRango && Input.GetButtonDown("Fire1")) || (esUnaCinematica))
+        if ((playerEnRango && Input.GetButtonDown("Fire1")) || (esUnaCinematica)) //Cambiar a cuando lo esta tocando
         {
+            determinarRespuestaCorrectaParaBoton();
             protaEscena.gameObject.GetComponent<Click2D>().setEstaHablando(true);
             if (!empiezaDialogo)
             {
@@ -113,27 +147,12 @@ public class SistemaDialogo : MonoBehaviour
             else if (texto.text == dialogos[indexDialogo])
             {
 
-                if (indexDialogo == numDialogoOpciones && !opcionSeleciona)
-                {
-                    tieneOpciones = true;
-                }
-
-                if (tieneOpciones)
-                {
-                    verificaBotonesPulsados();
-                    controlOpciones();
-                    
-                    //calculaBotones();
-                }
-                else
-                {
-                    siguienteDialogo();
-                }
+                revisionDialogoMultiopcion();
             }
             else if (Input.GetButtonDown("Fire1"))
             {
                 StopAllCoroutines();
-                siguienteDialogo();
+                revisionDialogoMultiopcion();
             }
             else if (Input.GetButtonDown("Fire2"))
             {
@@ -149,6 +168,27 @@ public class SistemaDialogo : MonoBehaviour
         }
     }
 
+    private void revisionDialogoMultiopcion() 
+    {
+        if (indexDialogo == numDialogoOpciones && !opcionSeleciona)
+        {
+            tieneOpciones = true;
+        }
+
+        if (tieneOpciones)
+        {
+            verificaBotonesPulsados();
+            controlOpciones();
+
+            //calculaBotones();
+        }
+        else
+        {
+            siguienteDialogo();
+        }
+    }
+
+
     private void verificaBotonesPulsados()
     {
         bool botonEncontrado = false;
@@ -160,14 +200,15 @@ public class SistemaDialogo : MonoBehaviour
                 botonEncontrado = true;
                 opcionSeleciona = true;
                 tieneOpciones = false;
+                if (botones[i].gameObject.GetComponent<ControlBoton>().getRespuestaCorrecta()) 
+                    {
+                        //Aqui se almacena una variable que diga si es una respuesta de cambio o no
+                        opcionCorrecta = true;
+                    }
+
             }
 
-            if (botones[i].gameObject.GetComponent<ControlBoton>().respuestaCorrecta) 
-            {
-                //Aqui se almacena una variable que diga si es una respuesta de cambio o no
-                opcionCorrecta = true;
-            }
-
+            
 
            // posicion = i;
             //int buttonIndex = i; // Variable temporal para evitar el problema de cierre
@@ -186,8 +227,10 @@ public class SistemaDialogo : MonoBehaviour
         for (int i = 0; i < botones.Length; i++) 
         {
             botones[i].GetComponent<ControlBoton>().setBotonPulsado(false);
-            botones[i].GetComponent<ControlBoton>().respuestaCorrecta = false;
+            botones[i].GetComponent<ControlBoton>().setRespuestaCorrecta(false);
         }
+        tieneOpciones = false;
+        opcionSeleciona = false;
     }
 
     private void iniciaDialogo() 
@@ -247,7 +290,7 @@ public class SistemaDialogo : MonoBehaviour
             playerEnRango = true;
         }
 
-        determinarRespuestaCorrectaParaBoton();
+        //determinarRespuestaCorrectaParaBoton();
 
     }
 

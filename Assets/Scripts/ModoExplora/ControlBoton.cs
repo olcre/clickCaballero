@@ -35,4 +35,15 @@ public class ControlBoton : MonoBehaviour
         this.botonPulsado = botonPulsado;
     }
 
+    public bool getRespuestaCorrecta()
+    {
+        return respuestaCorrecta;
+    }
+
+    public void setRespuestaCorrecta(bool respuestaCorrecta)
+    {
+        this.respuestaCorrecta = respuestaCorrecta;
+    }
+
+
 }
