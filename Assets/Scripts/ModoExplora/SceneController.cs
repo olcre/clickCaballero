@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour
 
     public Inventario inventario;
 
-    public GameObject player;
+    //public GameObject player;
 
     private bool vistaIglesia, sanJordiAccesible, visitaSanJordi, finalDragonMuerto;
 

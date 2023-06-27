@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_TagString
+      value: Cambio
+      objectReference: {fileID: 0}
     - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: panelCinematica
       value: 
@@ -681,7 +685,6 @@ GameObject:
   - component: {fileID: 314245081}
   - component: {fileID: 314245084}
   - component: {fileID: 314245083}
-  - component: {fileID: 314245082}
   m_Layer: 5
   m_Name: Cinematica_SantJordi
   m_TagString: Cura
@@ -709,27 +712,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &314245082
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314245080}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 585a4ef7d731bf14fa77618d1ce69d58, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &314245083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,7 +732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f7095aec86866e49a61cdc4dec71229, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9a412a635bde244795de08d08f3e479, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -835,6 +817,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 396964770}
+  - component: {fileID: 396964771}
+  - component: {fileID: 396964774}
+  - component: {fileID: 396964773}
+  - component: {fileID: 396964772}
   m_Layer: 5
   m_Name: Cinematica_final_malo1
   m_TagString: Untagged
@@ -862,6 +848,89 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &396964771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396964769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d633f5ce2b773c4f9a23eb4df62d1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelDialogo: {fileID: 416768063}
+  panelOpciones: {fileID: 1831771002}
+  texto: {fileID: 683758333}
+  dialogos:
+  - aaaaaaaaaa
+  botones: []
+  protaEscena: {fileID: 1042166989}
+  empiezaDialogo: 0
+  esUnaCinematica: 1
+  tieneOpciones: 0
+  numDialogoOpciones: -1
+  opcionSeleciona: 0
+--- !u!95 &396964772
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396964769}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &396964773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396964769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &396964774
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396964769}
+  m_CullTransparentMesh: 1
 --- !u!1 &400005231
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,6 +1002,7 @@ MonoBehaviour:
   - {fileID: 311740893}
   - {fileID: 1371882899}
   protaEscena: {fileID: 1042166989}
+  empiezaDialogo: 0
   esUnaCinematica: 0
   tieneOpciones: 0
   numDialogoOpciones: 0
@@ -1135,6 +1205,10 @@ PrefabInstance:
     - target: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_TagString
+      value: Cambio
       objectReference: {fileID: 0}
     - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: m_Enabled
@@ -1963,7 +2037,6 @@ MonoBehaviour:
   triangulosCinematicas:
   - {fileID: 40060686}
   inventario: {fileID: 1042166994}
-  player: {fileID: 0}
   finalMaloUno: {fileID: 1374626725}
   finalMaloDos: {fileID: 2052300044}
 --- !u!1001 &758027629
@@ -2402,6 +2475,11 @@ MonoBehaviour:
   player: {fileID: 1042166989}
   pantallaRelacionada: {fileID: 2115157917}
   pantallaActiva: 0
+--- !u!1 &920627028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6400830540824337449, guid: 8675cbdb389dec041905e7522040988c, type: 3}
+  m_PrefabInstance: {fileID: 2026991878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &983211321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2750,6 +2828,7 @@ MonoBehaviour:
   - {fileID: 311740893}
   - {fileID: 1371882899}
   protaEscena: {fileID: 1042166989}
+  empiezaDialogo: 0
   esUnaCinematica: 1
   tieneOpciones: 1
   numDialogoOpciones: 0
@@ -3613,6 +3692,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_PrefabInstance: {fileID: 405336568}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1374626729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374626725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0466bd57ca6dbdf4ab6f274fa91a6dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camara: {fileID: 1214308010}
+  player: {fileID: 1042166989}
+  coordenadasNuevas: {fileID: 920627028}
+  posicionExtraJugador: 0
+  posicionExtraCamaraX: 0
+  posicionExtraCamaraY: 0
 --- !u!1 &1384248797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1337308379432674841, guid: ca3a4efbaef9c864981d722d67e88ba2, type: 3}
@@ -4399,6 +4496,7 @@ MonoBehaviour:
     el amor..."
   botones: []
   protaEscena: {fileID: 1042166989}
+  empiezaDialogo: 0
   esUnaCinematica: 1
   tieneOpciones: 0
   numDialogoOpciones: -1
@@ -4590,6 +4688,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_PrefabInstance: {fileID: 93810824}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2052300048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052300044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0466bd57ca6dbdf4ab6f274fa91a6dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camara: {fileID: 1214308010}
+  player: {fileID: 1042166989}
+  coordenadasNuevas: {fileID: 920627028}
+  posicionExtraJugador: 0
+  posicionExtraCamaraX: 0
+  posicionExtraCamaraY: 0
 --- !u!1 &2097716052
 GameObject:
   m_ObjectHideFlags: 0

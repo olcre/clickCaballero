@@ -18,7 +18,7 @@ public class SistemaDialogo : MonoBehaviour
 
     public GameObject protaEscena;
 
-    private bool empiezaDialogo = false;
+    public bool empiezaDialogo = false;
     private int indexDialogo = 0;
 
     public bool esUnaCinematica = false;
@@ -139,7 +139,10 @@ public class SistemaDialogo : MonoBehaviour
         if ((playerEnRango && Input.GetButtonDown("Fire1")) || (esUnaCinematica)) //Cambiar a cuando lo esta tocando
         {
             determinarRespuestaCorrectaParaBoton();
+
             protaEscena.gameObject.GetComponent<Click2D>().setEstaHablando(true);
+
+            
             if (!empiezaDialogo)
             {
                 iniciaDialogo();
@@ -263,7 +266,10 @@ public class SistemaDialogo : MonoBehaviour
         panelDialogo.SetActive(false);
         Time.timeScale = 1;
         esUnaCinematica = false;
+
         protaEscena.gameObject.GetComponent<Click2D>().setEstaHablando(false);
+
+        
 
         //Resetear valores de botones
         resetearValoresBotones();

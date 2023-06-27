@@ -11,7 +11,7 @@ public class CargaEscena : MonoBehaviour
     public GameObject panelCinematica;
     protected GameObject sceneController;
 
- //   public GameObject protaEscena;
+    //public GameObject protaEscena;
 
     private bool escenaCargada = false;
     private void Awake()
@@ -28,12 +28,13 @@ public class CargaEscena : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (escenaCargada || panelCinematica.GetComponent<SistemaDialogo>().esUnaCinematica)) 
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire1")) && escenaCargada && !panelCinematica.GetComponent<SistemaDialogo>().empiezaDialogo) 
         {
             confirmarSalida();
+            Time.timeScale = 1;
         }
 
-        Time.timeScale = 1;
+        //
 
     }
 
@@ -45,11 +46,13 @@ public class CargaEscena : MonoBehaviour
             panelCinematica.SetActive(true);
             escenaCargada = true;
 
-            //collision.gameObject.GetComponent<Click2D>().setEstaHablando(true);
+            //protaEscena = collision.gameObject;
+
+           // protaEscena.GetComponent<Click2D>().setEstaHablando(true);
         }
     }
 
-    private void confirmarSalida()
+    public void confirmarSalida()
     {
         panelCinematica.SetActive(false);
 
