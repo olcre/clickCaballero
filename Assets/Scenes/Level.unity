@@ -128,6 +128,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
   m_PrefabInstance: {fileID: 8291013968264195943}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &44304215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+  m_PrefabInstance: {fileID: 464633184}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &93810824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -373,7 +378,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1070707701}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &250193311
 PrefabInstance:
@@ -685,8 +690,9 @@ GameObject:
   - component: {fileID: 314245081}
   - component: {fileID: 314245084}
   - component: {fileID: 314245083}
+  - component: {fileID: 314245085}
   m_Layer: 5
-  m_Name: Cinematica_SantJordi
+  m_Name: Cinematica_SantJordi_1
   m_TagString: Cura
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,6 +756,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314245080}
   m_CullTransparentMesh: 1
+--- !u!114 &314245085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314245080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d633f5ce2b773c4f9a23eb4df62d1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelDialogo: {fileID: 416768063}
+  panelOpciones: {fileID: 1831771002}
+  texto: {fileID: 683758333}
+  dialogos:
+  - Veo que eres el nuevo caballero...
+  - "Hace mucho tiempo yo tambi\xE9n quise enfrentar al drag\xF3n, aunque he de admitir
+    que jam\xE1s logr\xE9 acertarle con mi espada."
+  - "As\xED que me cans\xE9 y aqu\xED acab\xE9, alejado de todo el mundo por la verg\xFCenza
+    de no ser lo bastante fuerte como para salvar a nadie, ni siquiera a mi mismo..."
+  - 
+  - 
+  - 
+  botones:
+  - {fileID: 2097716054}
+  - {fileID: 311740893}
+  - {fileID: 1371882899}
+  protaEscena: {fileID: 1042166989}
+  empiezaDialogo: 0
+  esUnaCinematica: 1
+  tieneOpciones: 0
+  numDialogoOpciones: -1
+  opcionSeleciona: 0
 --- !u!1 &318563915
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,13 +998,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400005231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.88, y: 7.9889107, z: -11}
+  m_LocalPosition: {x: 3.38, y: 6.95, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 904992330}
   m_Father: {fileID: 1070707701}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &400005234
 MonoBehaviour:
@@ -978,6 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832e89234d8709f47bc8fabf06daa08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneController: {fileID: 0}
 --- !u!114 &400005235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,6 +1172,7 @@ RectTransform:
   - {fileID: 1573283655}
   - {fileID: 1294322433}
   - {fileID: 314245081}
+  - {fileID: 1965401022}
   - {fileID: 676556463}
   - {fileID: 416768064}
   - {fileID: 1831771003}
@@ -1273,7 +1315,7 @@ RectTransform:
   m_Children:
   - {fileID: 683758332}
   m_Father: {fileID: 403307211}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1473,7 +1515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.981758
+      value: 8.32
       objectReference: {fileID: 0}
     - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1513,7 +1555,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: m_Name
-      value: CinematicaSanJordi
+      value: CinematicaSanJordiQuest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
       propertyPath: protaEscena
@@ -1697,7 +1743,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 403307211}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2037,8 +2083,11 @@ MonoBehaviour:
   triangulosCinematicas:
   - {fileID: 40060686}
   inventario: {fileID: 1042166994}
+  sceneController: {fileID: 0}
   finalMaloUno: {fileID: 1374626725}
   finalMaloDos: {fileID: 2052300044}
+  santJordiUno: {fileID: 44304215}
+  santJordiDos: {fileID: 1589989238}
 --- !u!1001 &758027629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2335,7 +2384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904992329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.98, y: -7.23, z: 1}
+  m_LocalPosition: {x: 7.13, y: -7, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2592,7 +2641,7 @@ Transform:
   - {fileID: 697877681}
   - {fileID: 1264068488}
   m_Father: {fileID: 1070707701}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1042166989
 GameObject:
@@ -2756,7 +2805,7 @@ Animator:
   m_GameObject: {fileID: 1066985176}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 585a4ef7d731bf14fa77618d1ce69d58, type: 2}
+  m_Controller: {fileID: 9100000, guid: c6be6b280381ed442b50222a8ef6d7c1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2787,7 +2836,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9f7095aec86866e49a61cdc4dec71229, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d3d0044cc0119c4faf2928c9545c3b8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2868,6 +2917,7 @@ Transform:
   - {fileID: 699340285}
   - {fileID: 1106091092}
   - {fileID: 284837647}
+  - {fileID: 1589989239}
   - {fileID: 999513409}
   - {fileID: 400005232}
   - {fileID: 124253146}
@@ -4041,6 +4091,110 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1589989237
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1070707701}
+    m_Modifications:
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.981758
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0080047
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.21137027
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_Name
+      value: CinematicaSanJordiRespuesta
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: protaEscena
+      value: 
+      objectReference: {fileID: 1042166989}
+    - target: {fileID: 7611470003063368631, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelCinematica
+      value: 
+      objectReference: {fileID: 314245080}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: texto
+      value: 
+      objectReference: {fileID: 683758333}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelDialogo
+      value: 
+      objectReference: {fileID: 416768063}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: panelOpciones
+      value: 
+      objectReference: {fileID: 1831771002}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: tieneOpciones
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: esUnaCinematica
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+      propertyPath: dialogos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9136011381451569271, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+--- !u!1 &1589989238 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6058015999585822663, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+  m_PrefabInstance: {fileID: 1589989237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1589989239 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3956139824617442940, guid: c445d0d26a42dd5408b02f82dfec3677, type: 3}
+  m_PrefabInstance: {fileID: 1589989237}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1666719538
 GameObject:
   m_ObjectHideFlags: 0
@@ -4331,7 +4485,7 @@ RectTransform:
   - {fileID: 311740892}
   - {fileID: 1371882898}
   m_Father: {fileID: 403307211}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4559,6 +4713,112 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0305328, y: 1.8819482}
   m_EdgeRadius: 0
+--- !u!1 &1965401021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1965401022}
+  - component: {fileID: 1965401025}
+  - component: {fileID: 1965401024}
+  - component: {fileID: 1965401023}
+  m_Layer: 5
+  m_Name: Cinematica_SantJordi_2
+  m_TagString: Cura
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1965401022
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965401021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 403307211}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1965401023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965401021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d633f5ce2b773c4f9a23eb4df62d1c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelDialogo: {fileID: 416768063}
+  panelOpciones: {fileID: 1831771002}
+  texto: {fileID: 683758333}
+  dialogos:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  botones: []
+  protaEscena: {fileID: 0}
+  empiezaDialogo: 0
+  esUnaCinematica: 0
+  tieneOpciones: 0
+  numDialogoOpciones: 0
+  opcionSeleciona: 0
+--- !u!114 &1965401024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965401021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: b9a412a635bde244795de08d08f3e479, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1965401025
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965401021}
+  m_CullTransparentMesh: 1
 --- !u!1 &1989617924
 GameObject:
   m_ObjectHideFlags: 0

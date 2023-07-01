@@ -11,11 +11,15 @@ public class SceneController : MonoBehaviour
 
     public Inventario inventario;
 
-    //public GameObject player;
+    public GameObject sceneController;
+
+    private int pagosVagabundo;
 
     private bool vistaIglesia, sanJordiAccesible, visitaSanJordi, finalDragonMuerto;
 
     public GameObject finalMaloUno, finalMaloDos;
+
+    public GameObject santJordiUno, santJordiDos;
 
     // Start is called before the first frame update
 
@@ -23,6 +27,9 @@ public class SceneController : MonoBehaviour
     {
         inventario.setArmaduraOP(false);
         inventario.setCantidadDinero(0);
+        pagosVagabundo = 0;
+        sceneController = GameObject.FindGameObjectWithTag("ControlScene");
+        
     }
 
     void Start()
@@ -33,6 +40,8 @@ public class SceneController : MonoBehaviour
         finalDragonMuerto = false;
         finalMaloUno.SetActive(true);
         finalMaloDos.SetActive(false);
+        santJordiUno.SetActive(false);
+        santJordiDos.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,9 +52,19 @@ public class SceneController : MonoBehaviour
             desactivaIglesia();
         }
 
-        if (sanJordiAccesible) 
-        { 
-            
+        if (sanJordiAccesible)
+        {
+            if (!getFinalDragonMuerto())
+            {
+                santJordiUno.SetActive(true);
+                santJordiDos.SetActive(false);
+            }
+            else if (getFinalDragonMuerto() && visitaSanJordi)
+            {
+                santJordiUno.SetActive(false);
+                santJordiDos.SetActive(true);
+            }
+
         }
 
         if (inventario.getArmaduraOP()) 
@@ -56,8 +75,6 @@ public class SceneController : MonoBehaviour
 
     private void desactivaIglesia()
     {
-        //.gameObject.name
-        //cinematicas[0].SetActive(false);
         triangulosCinematicas[0].SetActive(false);
     }
 
@@ -81,6 +98,17 @@ public class SceneController : MonoBehaviour
         this.visitaSanJordi = visitaSanJordi;
     }
 
+    public bool getSanJordiAccesible()
+    {
+        return sanJordiAccesible;
+    }
+
+    public void setSanJordiAccesible(bool sanJordiAccesible)
+    {
+        this.sanJordiAccesible = sanJordiAccesible;
+    }
+
+
     public bool getFinalDragonMuerto()
     {
         return finalDragonMuerto;
@@ -91,17 +119,29 @@ public class SceneController : MonoBehaviour
         this.finalDragonMuerto = finalDragonMuerto;
     }
 
+    public int getPagosVagabundo()
+    {
+        return pagosVagabundo;
+    }
 
+    public void setPagosVagabundo(int pagosVagabundo)
+    {
+        this.pagosVagabundo = pagosVagabundo;
+    }
 
     public void iglesiaInvierte()
     {
-        inventario.setCantidadDinero(1);
+        inventario.setCantidadDinero(2);
         vistaIglesia = true;
     }
 
     public void mejorarArmadura() 
     {
-        inventario.setArmaduraOP(true);
+        if (inventario.getCantidadDinero() > 0) 
+        { 
+            inventario.setCantidadDinero(inventario.getCantidadDinero() - 1);
+            inventario.setArmaduraOP(true);
+        }
     }
 
 
@@ -116,9 +156,4 @@ public class SceneController : MonoBehaviour
         finalMaloUno.SetActive(false);
         finalMaloDos.SetActive(true);
     }
-
-
-
-
-
 }

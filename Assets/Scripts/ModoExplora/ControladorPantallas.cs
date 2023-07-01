@@ -25,8 +25,6 @@ public class ControladorPantallas : MonoBehaviour
         { */
         jugadorCambiaPantalla();
        // }
-
-
     }
 
 
@@ -50,41 +48,6 @@ public class ControladorPantallas : MonoBehaviour
             }
         //}
     }
-
-
-    /*private int pantallaPosicion()
-    {
-        int num = 0;
-        bool finCiclo = false;
-        // Calcula la distancia entre el personaje y el punto de fuga
-        while (finCiclo)
-        {
-            if (listaPantallas[num].GetComponent<Pantalla>().getPantallaActiva())
-            {
-                finCiclo = true;
-            }
-            num++;
-            //Debug.Log("-->" + "Pantalla: " + num + " Estado: " + listaPantallas[num].GetComponent<Pantalla>().getPantallaActiva());
-        }
-        return num;
-    }*/
-
-
-    //private void activaEstaPantalla(int num) 
-    //{
-    //    if (listaPantallas[num].GetComponent<Pantalla>().getPantallaActiva()) 
-    //    {
-    //        listaPantallas[num].GetComponent<Pantalla>().activaPuntoFuga();
-    //    }    
-    //}
-
-    //private void desactivaEstaPantalla(int num)
-    //{
-    //    if (!listaPantallas[num].GetComponent<Pantalla>().getPantallaActiva())
-    //    {
-    //        listaPantallas[num].GetComponent<Pantalla>().desactivaPuntoFuga();
-    //    }
-    //}
 
     private void jugadorCambiaPantalla() 
     {
@@ -128,3 +91,38 @@ public class ControladorPantallas : MonoBehaviour
     }
 
 }
+
+
+/*private int pantallaPosicion()
+{
+    int num = 0;
+    bool finCiclo = false;
+    // Calcula la distancia entre el personaje y el punto de fuga
+    while (finCiclo)
+    {
+        if (listaPantallas[num].GetComponent<Pantalla>().getPantallaActiva())
+        {
+            finCiclo = true;
+        }
+        num++;
+        //Debug.Log("-->" + "Pantalla: " + num + " Estado: " + listaPantallas[num].GetComponent<Pantalla>().getPantallaActiva());
+    }
+    return num;
+}*/
+
+
+//private void activaEstaPantalla(int num) 
+//{
+//    if (listaPantallas[num].GetComponent<Pantalla>().getPantallaActiva()) 
+//    {
+//        listaPantallas[num].GetComponent<Pantalla>().activaPuntoFuga();
+//    }    
+//}
+
+//private void desactivaEstaPantalla(int num)
+//{
+//    if (!listaPantallas[num].GetComponent<Pantalla>().getPantallaActiva())
+//    {
+//        listaPantallas[num].GetComponent<Pantalla>().desactivaPuntoFuga();
+//    }
+//}

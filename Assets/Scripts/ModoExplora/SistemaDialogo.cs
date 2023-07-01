@@ -16,6 +16,8 @@ public class SistemaDialogo : MonoBehaviour
 
     public Button[] botones;
 
+    protected GameObject sceneController;
+
     public GameObject protaEscena;
 
     public bool empiezaDialogo = false;
@@ -29,9 +31,8 @@ public class SistemaDialogo : MonoBehaviour
 
     private float tiempoCaracter = 0.05f;
 
-    //private int posicionArrayBotones;
-
     private bool opcionCorrecta = false;
+
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class SistemaDialogo : MonoBehaviour
         //panelOpciones = GameObject.FindGameObjectWithTag("PanelOpciones");
 
 
+        sceneController = GameObject.FindGameObjectWithTag("ControlScene");
         //Bug: El multiopciones puede colarse donde no debe
 
     }
@@ -52,10 +54,10 @@ public class SistemaDialogo : MonoBehaviour
         //determinarRespuestaCorrectaParaBoton();
 
         //controlOpciones();
-        if (opcionSeleciona && opcionCorrecta) 
-        { 
-            cambioDialogo();
-        }
+        //if (opcionSeleciona && opcionCorrecta) 
+        //{ 
+        //    cambioDialogo();
+        //}
         
     }
 
@@ -78,16 +80,54 @@ public class SistemaDialogo : MonoBehaviour
             //botones[1].GetComponentInChildren<TextMeshPro>().text = "No, ojalá me hubieran dado una";
             //botones[2].GetComponentInChildren<TextMeshPro>().text = "No, no se de donde conseguirla";
         }
+        else if (this.gameObject.name == "Cinematica_SantJordi_2")
+        {
+            botones[1].gameObject.SetActive(false);
+            botones[0].GetComponent<ControlBoton>().setRespuestaCorrecta(true);
+            //botones[0].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "";
+            botones[0].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Si...";
+            botones[2].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "No";
+            //botones[1].GetComponentInChildren<TextMeshPro>().text = "No, ojalá me hubieran dado una";
+            //botones[2].GetComponentInChildren<TextMeshPro>().text = "No, no se de donde conseguirla";
+        }
     }
 
     private void cambioDialogo()
     {
         //Confirma bucle
         // int bucleActual = confirmaBucle();
+        int dineroVagabundo = sceneController.GetComponent<SceneController>().getPagosVagabundo();
+
+
         if (this.gameObject.name == "Vagabundo" && personajeDisponeDeLoSolicitado())
         {
-            dialogos[1] = "Me has dado una moneda.";
-            dialogos[2] = "Ahora te doy información";
+            if (dineroVagabundo == 0)
+            {
+                dialogos[1] = "Por una moneda os puedo indicar el camino hacia el castillo. ";
+                dialogos[2] = "Caminad todo recto hacia la izquierda del mundo si no me falta un tornillo.";
+                //sceneController.GetComponent<SceneController>().setPagosVagabundo(dineroVagabundo + 1);
+            }
+            else if (dineroVagabundo == 1) 
+            {
+                dialogos[1] = "Muchas gracias por esta moneda mi señor.";
+                dialogos[2] = "Si matar al dragón con vuestra espada no es suficiente, contratad los servicios del armero justo enfrente.";
+
+            }
+            else if (dineroVagabundo == 2)
+            {
+                dialogos[1] = "En el callejón a mi espalda se esconde el reflejo incomodo para aquel que se acobarda. ";
+                dialogos[2] = "Un caballero que fue luz en su día, apagado al descubrir no ser tan fuerte como se creía. ";
+
+                sceneController.GetComponent<SceneController>().setSanJordiAccesible(true);
+
+            }
+            else if (dineroVagabundo >= 3)
+            {
+                dialogos[1] = "¿Otra moneda? Lo lamento pero no tengo más consejos para darte.  ";
+                dialogos[2] = "Me temo que tendrás que gastar tu dinero con alguien más ambicioso... ";
+
+            }
+            sceneController.GetComponent<SceneController>().setPagosVagabundo(dineroVagabundo+1);
         }
         else if (this.gameObject.name == "Vagabundo" && !personajeDisponeDeLoSolicitado()) 
         {
@@ -98,9 +138,15 @@ public class SistemaDialogo : MonoBehaviour
         {
             dialogos[1] = "Ahora vuestra armadura os podra proteger de todo mal... incluido el desamor.";
         }
-        else if (this.gameObject.name == "Cinematica_Vendedor" && !personajeDisponeDeLoSolicitado()) //Aqui algo falla
+        else if (this.gameObject.name == "Cinematica_Vendedor" && !personajeDisponeDeLoSolicitado()) 
         {
-            dialogos[1] = "Siempre podreis volver...";
+            dialogos[1] = "Siempre podreis volver a mi tienda si cambiais de opinión...";
+        }
+        else if (this.gameObject.name == "Cinematica_SantJordi_2" && personajeDisponeDeLoSolicitado()) 
+        {
+            dialogos[1] = "¿No habían rosas? No puede ser... entonces ¿Todo era mentira? Yo... ¿Que he estado anhelando entonces?";
+            dialogos[2] = "Por favor, marchaos... dejadme solo aunque sea por un momento... Tengo demasiado en lo que pensar...";
+
         }
     }
 
@@ -111,6 +157,12 @@ public class SistemaDialogo : MonoBehaviour
         {
             objectoNecesario = true;
         }
+
+        else if (sceneController.GetComponent<SceneController>().getFinalDragonMuerto() && (this.gameObject.name == "Cinematica_SantJordi_2"))
+        {
+            objectoNecesario = true;
+        }
+
         return objectoNecesario;
     }
 
@@ -130,6 +182,10 @@ public class SistemaDialogo : MonoBehaviour
         else
         {
             panelOpciones.SetActive(false);
+            if (opcionSeleciona && opcionCorrecta)
+            {
+                cambioDialogo();
+            }
         }
     }
 
@@ -182,6 +238,7 @@ public class SistemaDialogo : MonoBehaviour
         {
             verificaBotonesPulsados();
             controlOpciones();
+            //controlRompeErrores = true;
 
             //calculaBotones();
         }
@@ -234,6 +291,7 @@ public class SistemaDialogo : MonoBehaviour
         }
         tieneOpciones = false;
         opcionSeleciona = false;
+        //controlRompeErrores = false;
     }
 
     private void iniciaDialogo() 
@@ -241,7 +299,7 @@ public class SistemaDialogo : MonoBehaviour
         empiezaDialogo = true;
         panelDialogo.SetActive(true);
         indexDialogo = 0;
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         StartCoroutine(ShowLine());
 
     }
@@ -264,7 +322,7 @@ public class SistemaDialogo : MonoBehaviour
     {
         empiezaDialogo = false;
         panelDialogo.SetActive(false);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         esUnaCinematica = false;
 
         protaEscena.gameObject.GetComponent<Click2D>().setEstaHablando(false);

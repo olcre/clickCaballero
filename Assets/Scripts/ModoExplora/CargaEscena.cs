@@ -9,7 +9,7 @@ public class CargaEscena : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject panelCinematica;
-    protected GameObject sceneController;
+    public GameObject sceneController;
 
     //public GameObject protaEscena;
 
@@ -54,6 +54,7 @@ public class CargaEscena : MonoBehaviour
 
     public void confirmarSalida()
     {
+        int contadorBucles;
         panelCinematica.SetActive(false);
 
         if (this.gameObject.name == "CinematicaIglesia")
@@ -62,10 +63,21 @@ public class CargaEscena : MonoBehaviour
         }
         else if (this.gameObject.name == "CinematicaVendedor")
         {
-            sceneController.GetComponent<SceneController>().mejorarArmadura();
+            sceneController.GetComponent<SceneController>().mejorarArmadura();  
+        }
+        else if (this.gameObject.name == "Cinematica_SantJordi_1")
+        {
+            sceneController.GetComponent<SceneController>().santJordiQuest();
+        }
+        else if (this.gameObject.name == "Cinematica_SantJordi_2")
+        {
+            
+            //sceneController.GetComponent<SceneController>().santJordiQuest();
         }
         else if (this.gameObject.name == "CinematicaFinal2" || this.gameObject.name == "CinematicaFinal1") 
         {
+            contadorBucles = sceneController.GetComponent<BucleController>().getBuclesTotales();
+            sceneController.GetComponent<BucleController>().setBuclesTotales(contadorBucles+1);
             if (this.gameObject.name == "CinematicaFinal2") 
             {
                 sceneController.GetComponent<SceneController>().setFinalDragonMuerto(true);
