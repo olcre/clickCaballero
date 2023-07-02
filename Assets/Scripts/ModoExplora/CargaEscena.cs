@@ -54,7 +54,7 @@ public class CargaEscena : MonoBehaviour
 
     public void confirmarSalida()
     {
-        int contadorBucles;
+        //int contadorBucles = 0;
         panelCinematica.SetActive(false);
 
         if (this.gameObject.name == "CinematicaIglesia")
@@ -76,17 +76,20 @@ public class CargaEscena : MonoBehaviour
         }
         else if (this.gameObject.name == "CinematicaFinal2" || this.gameObject.name == "CinematicaFinal1") 
         {
-            contadorBucles = sceneController.GetComponent<BucleController>().getBuclesTotales();
-            sceneController.GetComponent<BucleController>().setBuclesTotales(contadorBucles+1);
+            //contadorBucles = sceneController.GetComponent<BucleController>().getBuclesTotales();
+            //sceneController.GetComponent<BucleController>().setBuclesTotales(contadorBucles + 1);
             if (this.gameObject.name == "CinematicaFinal2") 
             {
                 sceneController.GetComponent<SceneController>().setFinalDragonMuerto(true);
             }
 
-           // BucleController hay que meter los metodos aqui
+            // BucleController hay que meter los metodos aqui
+            sceneController.GetComponent<BucleController>().iniciaBucle();
+            Debug.Log("Bucles actuales: " + sceneController.GetComponent<BucleController>().getBuclesTotales());
+            //setVistaIglesia
 
         }
-
+        escenaCargada = false;
         //protaEscena.gameObject.GetComponent<Click2D>().setEstaHablando(false);
     }
 

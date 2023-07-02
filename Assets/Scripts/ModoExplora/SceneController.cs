@@ -7,7 +7,7 @@ public class SceneController : MonoBehaviour
 {
     //public GameObject[] cinematicas;
 
-    public GameObject[] triangulosCinematicas;
+    public GameObject iglesiaAmor;
 
     public Inventario inventario;
 
@@ -17,7 +17,7 @@ public class SceneController : MonoBehaviour
 
     private bool vistaIglesia, sanJordiAccesible, visitaSanJordi, finalDragonMuerto;
 
-    public GameObject finalMaloUno, finalMaloDos;
+    public GameObject finalMaloUno, finalMaloDos, finalVerdadero;
 
     public GameObject santJordiUno, santJordiDos;
 
@@ -27,6 +27,7 @@ public class SceneController : MonoBehaviour
     {
         inventario.setArmaduraOP(false);
         inventario.setCantidadDinero(0);
+        finalVerdadero.SetActive(false);
         pagosVagabundo = 0;
         sceneController = GameObject.FindGameObjectWithTag("ControlScene");
         
@@ -47,9 +48,18 @@ public class SceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (vistaIglesia) 
+        controlObjetos();
+    }
+
+    private void controlObjetos()
+    {
+        if (vistaIglesia)
         {
-            desactivaIglesia();
+            iglesiaAmor.SetActive(false);
+        }
+        else
+        {
+            iglesiaAmor.SetActive(true);
         }
 
         if (sanJordiAccesible)
@@ -67,15 +77,17 @@ public class SceneController : MonoBehaviour
 
         }
 
-        if (inventario.getArmaduraOP()) 
+        if (inventario.getArmaduraOP())
         {
             activaSegundoFinal();
         }
-    }
 
-    private void desactivaIglesia()
-    {
-        triangulosCinematicas[0].SetActive(false);
+        if (sceneController.GetComponent<BucleController>().getBucleRoto()) 
+        {
+            finalVerdadero.SetActive(false);
+        }
+
+
     }
 
     public bool getVisitaIglesia() 

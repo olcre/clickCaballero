@@ -6,7 +6,7 @@ public class BucleController : MonoBehaviour
 {
     private bool dragonMuerto;
 
-    private bool bucleReiniciado;
+   // private bool bucleReiniciado;
 
     private int buclesTotales;
 
@@ -20,38 +20,41 @@ public class BucleController : MonoBehaviour
     void Start()
     {
         buclesTotales = 0;
+        bucleRoto = false;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (bucleReiniciado)
-        {
-            iniciaBucle();
-        }
+    //void Update()
+    //{
+    //    if (bucleReiniciado)
+    //    {
+    //        iniciaBucle();
+    //    }
         
-    }
+    //}
 
     public void iniciaBucle() 
     {
         inventario.setArmaduraOP(false);
         inventario.setCantidadDinero(0);
         scene.setVistaIglesia(false);
-        bucleReiniciado = false;
+        //bucleReiniciado = false;
+
         if (scene.getFinalDragonMuerto()) 
         {
             dragonMuerto = true;
         }
+        buclesTotales++;
     }
 
-    public void setBucleReiniciado(bool bucleReiniciado) 
+    public void setBucleRoto(bool bucleRoto) 
     {
-        this.bucleReiniciado = bucleReiniciado;
+        this.bucleRoto = bucleRoto;
     }
 
-    public bool getBucleReiniciado() 
+    public bool getBucleRoto() 
     {
-        return bucleReiniciado;
+        return bucleRoto;
     }
 
     public void setBuclesTotales(int buclesTotales)
@@ -69,13 +72,15 @@ public class BucleController : MonoBehaviour
 
     //Indirectamente de que final malo salga, se debe ejecutar esté metodo: 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player")) 
-        {
-            iniciaBucle();
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player")) 
+    //    {
+    //        iniciaBucle();
+    //        buclesTotales++;
+
+    //    }
+    //}
 
 }
 
