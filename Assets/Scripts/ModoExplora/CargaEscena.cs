@@ -65,16 +65,16 @@ public class CargaEscena : MonoBehaviour
         {
             sceneController.GetComponent<SceneController>().mejorarArmadura();  
         }
-        else if (this.gameObject.name == "Cinematica_SantJordi_1")
+        else if (this.gameObject.name == "Cinematica_SantJordi_1") //Incorrecto
         {
             sceneController.GetComponent<SceneController>().santJordiQuest();
         }
-        else if (this.gameObject.name == "Cinematica_SantJordi_2")
+        else if (this.gameObject.name == "Cinematica_SantJordi_2") //Incorrecto
         {
             
             //sceneController.GetComponent<SceneController>().santJordiQuest();
         }
-        else if (this.gameObject.name == "CinematicaFinal2" || this.gameObject.name == "CinematicaFinal1") 
+        else if (this.gameObject.name == "CinematicaFinal1" || this.gameObject.name == "CinematicaFinal2") 
         {
             //contadorBucles = sceneController.GetComponent<BucleController>().getBuclesTotales();
             //sceneController.GetComponent<BucleController>().setBuclesTotales(contadorBucles + 1);
@@ -84,7 +84,7 @@ public class CargaEscena : MonoBehaviour
             }
 
             // BucleController hay que meter los metodos aqui
-            sceneController.GetComponent<BucleController>().iniciaBucle();
+            sceneController.GetComponent<SceneController>().setVistaIglesia(false);
             Debug.Log("Bucles actuales: " + sceneController.GetComponent<BucleController>().getBuclesTotales());
             //setVistaIglesia
 

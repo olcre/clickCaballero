@@ -10,7 +10,7 @@ public class BucleController : MonoBehaviour
 
     private int buclesTotales;
 
-    private Inventario inventario;
+    public Inventario inventario;
 
     SceneController scene;
 

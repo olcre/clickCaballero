@@ -33,6 +33,7 @@ public class SistemaDialogo : MonoBehaviour
 
     private bool opcionCorrecta = false;
 
+    private bool hablandoConNPC = false;
 
     void Start()
     {
@@ -127,6 +128,7 @@ public class SistemaDialogo : MonoBehaviour
                 dialogos[2] = "Me temo que tendrás que gastar tu dinero con alguien más ambicioso... ";
 
             }
+            protaEscena.GetComponent<Inventario>().setCantidadDinero(protaEscena.GetComponent<Inventario>().getCantidadDinero()-1);
             sceneController.GetComponent<SceneController>().setPagosVagabundo(dineroVagabundo+1);
         }
         else if (this.gameObject.name == "Vagabundo" && !personajeDisponeDeLoSolicitado()) 
@@ -156,11 +158,11 @@ public class SistemaDialogo : MonoBehaviour
         {
             dialogos[1] = "Es el segundo bucle";
         }
-        else if (this.gameObject.name == "Chica_del_Rio" && bucleActual == 2)
+        else if (this.gameObject.name == "Chica_del_Rio" && sceneController.GetComponent<SceneController>().getVisitaSanJordi() && bucleActual >= 2)
         {
             dialogos[1] = "Es el tercer bucle";
         }
-        else if (this.gameObject.name == "Chica_del_Rio" && bucleActual >= 3)
+        else if (this.gameObject.name == "Chica_del_Rio" &&  bucleActual >= 3)
         {
             dialogos[1] = "Es el cuarto bucle";
             sceneController.GetComponent<BucleController>().setBucleRoto(true);
@@ -189,11 +191,11 @@ public class SistemaDialogo : MonoBehaviour
     }
 
 
-    private int confirmaBucle()
-    {
-        int buclesTotales = sceneController.GetComponent<BucleController>().getBuclesTotales();
-        return buclesTotales;
-    }
+    //private int confirmaBucle()
+    //{
+    //    int buclesTotales = sceneController.GetComponent<BucleController>().getBuclesTotales();
+    //    return buclesTotales;
+    //}
 
     private void controlOpciones()
     {
@@ -214,7 +216,7 @@ public class SistemaDialogo : MonoBehaviour
 
 
     private void flujoDialogos(){
-        if ((playerEnRango && Input.GetButtonDown("Fire1")) || (esUnaCinematica)) //Cambiar a cuando lo esta tocando
+        if ((playerEnRango && hablandoConNPC/*Input.GetButtonDown("Fire1")*/) || esUnaCinematica) //Cambiar a cuando lo esta tocando
         {
             determinarRespuestaCorrectaParaBoton();
 
@@ -313,6 +315,7 @@ public class SistemaDialogo : MonoBehaviour
         }
         tieneOpciones = false;
         opcionSeleciona = false;
+        hablandoConNPC = false;
         //controlRompeErrores = false;
     }
 
@@ -367,20 +370,17 @@ public class SistemaDialogo : MonoBehaviour
         }
 
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) 
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Inicia dialogo");
             playerEnRango = true;
         }
 
-        //determinarRespuestaCorrectaParaBoton();
-
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -389,6 +389,67 @@ public class SistemaDialogo : MonoBehaviour
             //panelDialogo.SetActive(false);
         }
     }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("Elemento pulsado");
+        hablandoConNPC = true;
+        // Realiza las acciones que deseas realizar cuando se ha pulsado sobre el elemento
+    }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player")) 
+    //    {
+    //        Debug.Log("Inicia dialogo");
+    //        playerEnRango = true;
+    //    }
+
+    //    //determinarRespuestaCorrectaParaBoton();
+
+    //}
+
+    //public void OnMouseUpAsButton()
+    //{
+    //    if (gameObject.CompareTag("NPC"))
+    //    {
+    //        Debug.Log("NPC Clickeado");
+    //        hablandoConNPC = true;
+    //    }
+    //}
+
+    //public void OnMouseOver()
+    //{
+    //    if (Input.GetMouseButtonDown(0)) // Se verifica si se ha hecho clic con el botón izquierdo del mouse
+    //    {
+    //        if (gameObject.CompareTag("NPC"))
+    //        {
+    //            Debug.Log("NPC Clickeado");
+    //            hablandoConNPC = true;
+    //        }
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //        Debug.Log("Deja dialogo");
+    //        playerEnRango = false;
+    //        //panelDialogo.SetActive(false);
+    //    }
+    //}
+
+    //public void OnMouseDown()
+    //{
+    //    if (this.gameObject.CompareTag("NPC")) 
+    //    {
+    //        Debug.Log("NPC Clickeado");
+    //        hablandoConNPC = true;
+    //    }
+    //}
+
+
 
     //private void OnButtonClicked()
     //{

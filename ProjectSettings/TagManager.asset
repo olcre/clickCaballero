@@ -17,6 +17,7 @@ TagManager:
   - PanelDialogo
   - Dialogo
   - PanelOpciones
+  - NPC
   layers:
   - Default
   - TransparentFX
