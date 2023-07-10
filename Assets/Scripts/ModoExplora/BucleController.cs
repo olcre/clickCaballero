@@ -37,13 +37,13 @@ public class BucleController : MonoBehaviour
     {
         inventario.setArmaduraOP(false);
         inventario.setCantidadDinero(0);
-        scene.setVistaIglesia(false);
+        //scene.setVistaIglesia(false);
         //bucleReiniciado = false;
 
-        if (scene.getFinalDragonMuerto()) 
-        {
-            dragonMuerto = true;
-        }
+        //if (scene.getFinalDragonMuerto()) 
+        //{
+        //    dragonMuerto = true;
+        //}
         buclesTotales++;
     }
 
@@ -66,6 +66,9 @@ public class BucleController : MonoBehaviour
     {
         return buclesTotales;
     }
+
+
+
 
     //Cuando el caballero se haya ido del callejon de sant jordi y de la calle principal, Sant Jordi ya no se encontrara en el callejon
 

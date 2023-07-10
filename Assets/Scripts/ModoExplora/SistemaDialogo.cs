@@ -96,7 +96,7 @@ public class SistemaDialogo : MonoBehaviour
     private void cambioDialogo()
     {
         //Confirma bucle
-        int bucleActual = sceneController.GetComponent<BucleController>().getBuclesTotales();
+       // int bucleActual = sceneController.GetComponent<BucleController>().getBuclesTotales();
         int dineroVagabundo = sceneController.GetComponent<SceneController>().getPagosVagabundo();
 
 
@@ -150,23 +150,23 @@ public class SistemaDialogo : MonoBehaviour
             dialogos[2] = "Por favor, marchaos... dejadme solo aunque sea por un momento... Tengo demasiado en lo que pensar...";
 
         }
-        else if (this.gameObject.name == "Chica_del_Rio" && bucleActual == 0)
-        {
-            dialogos[1] = "Es el primer bucle";
-        }
-        else if (this.gameObject.name == "Chica_del_Rio" && bucleActual == 1)
-        {
-            dialogos[1] = "Es el segundo bucle";
-        }
-        else if (this.gameObject.name == "Chica_del_Rio" && sceneController.GetComponent<SceneController>().getVisitaSanJordi() && bucleActual >= 2)
-        {
-            dialogos[1] = "Es el tercer bucle";
-        }
-        else if (this.gameObject.name == "Chica_del_Rio" &&  bucleActual >= 3)
-        {
-            dialogos[1] = "Es el cuarto bucle";
-            sceneController.GetComponent<BucleController>().setBucleRoto(true);
-        }
+        //else if (this.gameObject.name == "Chica_del_Rio" && bucleActual == 0)
+        //{
+        //    dialogos[1] = "Es el primer bucle";
+        //}
+        //else if (this.gameObject.name == "Chica_del_Rio" && bucleActual == 1)
+        //{
+        //    dialogos[1] = "Es el segundo bucle";
+        //}
+        //else if (this.gameObject.name == "Chica_del_Rio" && sceneController.GetComponent<SceneController>().getVisitaSanJordi() && bucleActual >= 2)
+        //{
+        //    dialogos[1] = "Es el tercer bucle";
+        //}
+        //else if (this.gameObject.name == "Chica_del_Rio" &&  bucleActual >= 3)
+        //{
+        //    dialogos[1] = "Es el cuarto bucle";
+        //    sceneController.GetComponent<BucleController>().setBucleRoto(true);
+        //}
         //else if (this.gameObject.name == "Chica_del_Rio" && )
         //{
         //    dialogos[1] = "Adios...";

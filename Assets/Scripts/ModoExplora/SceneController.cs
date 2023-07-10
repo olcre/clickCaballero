@@ -15,11 +15,13 @@ public class SceneController : MonoBehaviour
 
     private int pagosVagabundo;
 
-    private bool vistaIglesia, sanJordiAccesible, visitaSanJordi, finalDragonMuerto;
+    private bool vistaIglesia, sanJordiAccesible, visitaSanJordi, finalDragonMuerto, jordiLiberado;
 
     public GameObject finalMaloUno, finalMaloDos, finalVerdadero;
 
     public GameObject santJordiUno, santJordiDos;
+
+    public GameObject nina1, nina2, nina3, nina4;
 
     // Start is called before the first frame update
 
@@ -28,6 +30,7 @@ public class SceneController : MonoBehaviour
         inventario.setArmaduraOP(false);
         inventario.setCantidadDinero(0);
         finalVerdadero.SetActive(false);
+        jordiLiberado = false;
         pagosVagabundo = 0;
         sceneController = GameObject.FindGameObjectWithTag("ControlScene");
         
@@ -43,6 +46,7 @@ public class SceneController : MonoBehaviour
         finalMaloDos.SetActive(false);
         santJordiUno.SetActive(false);
         santJordiDos.SetActive(false);
+        finalVerdadero.SetActive(false);
     }
 
     // Update is called once per frame
@@ -82,11 +86,12 @@ public class SceneController : MonoBehaviour
             activaSegundoFinal();
         }
 
-        if (sceneController.GetComponent<BucleController>().getBucleRoto()) 
+        if (jordiLiberado) 
         {
-            finalVerdadero.SetActive(false);
+            finalVerdadero.SetActive(true);
         }
 
+        controlNina();
 
     }
 
@@ -118,6 +123,16 @@ public class SceneController : MonoBehaviour
     public void setSanJordiAccesible(bool sanJordiAccesible)
     {
         this.sanJordiAccesible = sanJordiAccesible;
+    }
+
+    public bool getJordiLiberado()
+    {
+        return jordiLiberado;
+    }
+
+    public void setJordiLiberado(bool jordiLiberado)
+    {
+        this.jordiLiberado = jordiLiberado;
     }
 
 
@@ -168,4 +183,39 @@ public class SceneController : MonoBehaviour
         finalMaloUno.SetActive(false);
         finalMaloDos.SetActive(true);
     }
+
+    public void controlNina()
+    {
+        int buclesTotales = sceneController.GetComponent<BucleController>().getBuclesTotales();
+        if (buclesTotales == 0)
+        {
+            nina1.SetActive(true);
+            nina2.SetActive(false);
+            nina3.SetActive(false);
+            nina4.SetActive(false);
+        }
+        else if (buclesTotales > 0 && !visitaSanJordi && !sanJordiAccesible)
+        {
+            nina1.SetActive(false);
+            nina2.SetActive(true);
+            nina3.SetActive(false);
+            nina4.SetActive(false);
+        }
+        else if (buclesTotales > 0 && visitaSanJordi)
+        {
+            nina1.SetActive(false);
+            nina2.SetActive(false);
+            nina3.SetActive(true);
+            nina4.SetActive(false);
+        }
+        else if (buclesTotales > 0 && jordiLiberado) 
+        {
+            nina1.SetActive(false);
+            nina2.SetActive(false);
+            nina3.SetActive(false);
+            nina4.SetActive(true);
+        }
+
+    }
+
 }
