@@ -177,6 +177,7 @@ public class SistemaDialogo : MonoBehaviour
     public bool personajeDisponeDeLoSolicitado() 
     {
         bool objectoNecesario = false;
+
         if (protaEscena.GetComponent<Inventario>().getCantidadDinero() > 0 && (this.gameObject.name == "Vagabundo" || this.gameObject.name == "Cinematica_Vendedor")) 
         {
             objectoNecesario = true;
@@ -214,7 +215,6 @@ public class SistemaDialogo : MonoBehaviour
     }
 
 
-
     private void flujoDialogos(){
         if ((playerEnRango && hablandoConNPC/*Input.GetButtonDown("Fire1")*/) || esUnaCinematica) //Cambiar a cuando lo esta tocando
         {
@@ -229,7 +229,6 @@ public class SistemaDialogo : MonoBehaviour
             }
             else if (texto.text == dialogos[indexDialogo])
             {
-
                 revisionDialogoMultiopcion();
             }
             else if (Input.GetButtonDown("Fire1"))
@@ -262,9 +261,6 @@ public class SistemaDialogo : MonoBehaviour
         {
             verificaBotonesPulsados();
             controlOpciones();
-            //controlRompeErrores = true;
-
-            //calculaBotones();
         }
         else
         {

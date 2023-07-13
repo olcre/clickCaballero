@@ -201,7 +201,7 @@ public class SceneController : MonoBehaviour
             nina3.SetActive(false);
             nina4.SetActive(false);
         }
-        else if (buclesTotales > 0 && visitaSanJordi)
+        else if (buclesTotales > 0 && visitaSanJordi && !jordiLiberado)
         {
             nina1.SetActive(false);
             nina2.SetActive(false);

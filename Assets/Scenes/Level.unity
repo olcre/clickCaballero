@@ -5901,18 +5901,22 @@ MonoBehaviour:
   panelOpciones: {fileID: 1831771002}
   texto: {fileID: 683758333}
   dialogos:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  botones: []
-  protaEscena: {fileID: 0}
+  - "\xBFLo has matado ya?"
+  - "Si\u2026 pero dentro del drag\xF3n no encontr\xE9 rosas de ning\xFAn tipo."
+  - "\xBFNo hab\xEDan rosas? No puede ser\u2026 entonces \xBFTodo era mentira\u2026?
+    Yo\u2026 \xBFQu\xE9 he estado anhelando entonces?"
+  - "Lamento haberle dado la noticia\u2026"
+  - "Por favor, marchaos\u2026. dejadme solo aunque sea por un momento\u2026 Tengo
+    demasiado en lo que pensar\u2026"
+  botones:
+  - {fileID: 2097716054}
+  - {fileID: 311740893}
+  - {fileID: 1371882899}
+  protaEscena: {fileID: 1042166989}
   empiezaDialogo: 0
   esUnaCinematica: 0
   tieneOpciones: 0
-  numDialogoOpciones: 0
+  numDialogoOpciones: -1
   opcionSeleciona: 0
 --- !u!114 &1965401024
 MonoBehaviour:
