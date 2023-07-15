@@ -93,8 +93,6 @@ public class Click2D : MonoBehaviour
        
         BlendTreeValue = transform.position - worldPosition; //AÑADIDO PARA EL BLEND TREE
         transform.position = Vector3.MoveTowards(transform.position, worldPosition, Time.deltaTime * Speed);
-       
-        
         
     }
 

@@ -34,6 +34,7 @@ public class AnimatorCaballeroBlendTree : MonoBehaviour
         Debug.Log("actualiza frame)");
 
         transform.position = ReferenciaClick2D.transform.position;
+        transform.localScale = ReferenciaClick2D.transform.localScale;
         
     }
 
