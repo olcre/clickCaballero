@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class Click2D : MonoBehaviour
 {
-  //  public ControllScene escena;
+    //  public ControllScene escena;
+
+    [SerializeField] float Speed; //parametro para modificar la velocidad del personaje
 
     public Camera mainCamera;
 
@@ -16,6 +18,12 @@ public class Click2D : MonoBehaviour
     public bool estaHablando;
 
     private Puerta puertaX;
+
+    public Vector3 BlendTreeValue; // AÑADIDO PARA EL BLEND TREE
+
+
+
+    
 
     public Puerta PuertaX { get => puertaX; set => puertaX = value; }
 
@@ -33,12 +41,14 @@ public class Click2D : MonoBehaviour
     void Awake()
     {
         estaHablando = false;
+         
     }
 
     void Update()
     {
         clickMovimiento();
         verificadorDeMovimiento();
+        
     }
 
     //Permite mover al jugador
@@ -80,7 +90,12 @@ public class Click2D : MonoBehaviour
 
     private void trasladoPersonaje() 
     {
-        transform.position = Vector3.MoveTowards(transform.position, worldPosition, Time.deltaTime * 5);
+       
+        BlendTreeValue = transform.position - worldPosition; //AÑADIDO PARA EL BLEND TREE
+        transform.position = Vector3.MoveTowards(transform.position, worldPosition, Time.deltaTime * Speed);
+       
+        
+        
     }
 
 
