@@ -3429,7 +3429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efafef1f6af2f144bb933e1c59d5591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 2.5
   mainCamera: {fileID: 1214308012}
   tocaPuerta: 0
   estaHablando: 0
