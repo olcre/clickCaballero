@@ -21,10 +21,6 @@ public class Click2D : MonoBehaviour
 
     public Vector3 BlendTreeValue; // AÑADIDO PARA EL BLEND TREE
 
-
-
-    
-
     public Puerta PuertaX { get => puertaX; set => puertaX = value; }
 
     //private bool personajeEnMovimiento = false;
@@ -41,7 +37,8 @@ public class Click2D : MonoBehaviour
     void Awake()
     {
         estaHablando = false;
-         
+
+
     }
 
     void Update()
@@ -93,7 +90,7 @@ public class Click2D : MonoBehaviour
        
         BlendTreeValue = transform.position - worldPosition; //AÑADIDO PARA EL BLEND TREE
         transform.position = Vector3.MoveTowards(transform.position, worldPosition, Time.deltaTime * Speed);
-        
+        TomaDeReferencias();
     }
 
 
@@ -143,4 +140,12 @@ public class Click2D : MonoBehaviour
         this.estaHablando = estaHablando;
     }
 
+    private void TomaDeReferencias()
+    {
+        float x = (BlendTreeValue.x * 5);
+        float y = (BlendTreeValue.y * 5);
+
+        this.GetComponentInChildren<Animator>().SetFloat("x", -x);
+        this.GetComponentInChildren<Animator>().SetFloat("y", -y);
+    }
 }
